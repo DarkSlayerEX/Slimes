@@ -1,0 +1,9 @@
+c:\GAMES\Rimworld\Mods\Slimes\Common\Source\Slimes\bin\Debug\Slimes.dll
+c:\GAMES\Rimworld\Mods\Slimes\Common\Source\Slimes\bin\Debug\Slimes.pdb
+c:\GAMES\Rimworld\Mods\Slimes\Common\Source\Slimes\obj\Debug\Slimes.csprojAssemblyReference.cache
+c:\GAMES\Rimworld\Mods\Slimes\Common\Source\Slimes\obj\Debug\Slimes.csproj.CoreCompileInputs.cache
+c:\GAMES\Rimworld\Mods\Slimes\Common\Source\Slimes\obj\Debug\Slimes.dll
+c:\GAMES\Rimworld\Mods\Slimes\Common\Source\Slimes\obj\Debug\Slimes.pdb
+c:\GAMES\Rimworld\Mods\Slimes\Common\Assemblies\Slimes.dll
+c:\GAMES\Rimworld\Mods\Slimes\Common\Assemblies\Slimes.pdb
+c:\GAMES\Rimworld\Mods\Slimes\Common\Source\Slimes\obj\Debug\Slimes.csproj.CopyComplete

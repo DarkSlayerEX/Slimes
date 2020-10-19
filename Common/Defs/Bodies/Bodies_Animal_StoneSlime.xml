@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <BodyDef>
+    <defName>StoneSlime</defName>
+    <label>stoneslime</label>
+    <corePart>
+      <def>SlimeCore</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+		<li>
+          <def>SlimeMembrane</def>
+          <customLabel>membrane</customLabel>
+          <coverage>0.30</coverage>
+          <depth>Outside</depth>
+        </li>
+		<li>
+          <def>SlimeCore</def>
+          <customLabel>core</customLabel>
+          <coverage>0.05</coverage>
+          <depth>Outside</depth>
+        </li>
+		<li>
+          <def>RockArmor</def>
+          <customLabel>rock armor</customLabel>
+          <coverage>0.60</coverage>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>SlimeSensors</def>
+          <customLabel>sensory organs</customLabel>
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

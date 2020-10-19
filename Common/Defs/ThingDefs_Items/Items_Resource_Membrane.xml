@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <ThingDef ParentName="LeatherBase">
+    <defName>Slime_Membrane</defName>
+    <label>slime membrane</label>
+    <description>The dried out membrane of a slime. Not very sturdy.</description>
+    <statBases>
+      <MarketValue>2.2</MarketValue>
+      <StuffPower_Armor_Sharp>0.10</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.10</StuffPower_Armor_Blunt>
+      <StuffPower_Insulation_Cold>5</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>5</StuffPower_Insulation_Heat>
+    </statBases>
+    <graphicData>
+      <color>(154,238,167)</color>
+    </graphicData>
+    <stuffProps>
+      <color>(154,238,167)</color>
+      <commonality>0.075</commonality>
+      <statFactors>
+        <MaxHitPoints>1.0</MaxHitPoints>
+      </statFactors>
+    </stuffProps>
+  </ThingDef>
+
+</Defs>

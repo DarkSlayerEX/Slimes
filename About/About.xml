@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>L-Slimes Edit</name>
+  <author>DarkSlayerEX</author>
+  <description>This mod adds slimes to RimWorld. These amoeboid creatures can be as temperamental as cobras, yet are as tough as bears. Taking one down or taming one could be highly dangerous, so beware! (Features builtin patching for A Dog Said... Animal Prosthetics and More Mechanoids.)
+  Edit by DarkSlayerEX
+  </description>
+    <supportedVersions>
+	<li>1.0</li>
+        <li>1.1</li>
+        <li>1.2</li>
+    </supportedVersions>
+  <packageId>DarkSlayerEX.LSlimes</packageId>
+</ModMetaData>

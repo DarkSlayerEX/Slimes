@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<ThingDef ParentName="SlimeBase">
+    <defName>Slime</defName>
+    <label>slime</label>
+    <description>Slimes are gelatinous creatures native to the rimworlds. They tend to move in small herds, and live for over a thousand years. A tame slime can be sheared for Insect Jelly, and its eggs collected to sell or breed. Trained slimes are formidable soldiers, as tough as bears and as aggressive as cobras.</description>
+    <statBases>
+      <MoveSpeed>1.0</MoveSpeed>
+      <ComfyTemperatureMin>-20</ComfyTemperatureMin>
+      <ComfyTemperatureMax>20</ComfyTemperatureMax>
+      <MarketValue>300</MarketValue>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+	<race>
+      <wildBiomes>
+        <TropicalRainforest>0.3</TropicalRainforest>
+        <TemperateForest>0.3</TemperateForest>
+        <BorealForest>0.3</BorealForest>
+        <Tundra>0.3</Tundra>
+        <AridShrubland>0.3</AridShrubland>
+        <Desert>0.3</Desert>
+        <TropicalSwamp>0.3</TropicalSwamp>
+        <ColdBog>0.3</ColdBog>
+        <TemperateSwamp>0.3</TemperateSwamp>
+      </wildBiomes>
+	</race>
+    <butcherProducts>
+      <InsectJelly>30</InsectJelly>
+    </butcherProducts>
+  </ThingDef>
+
+  <PawnKindDef ParentName="SlimeKindBase">
+    <defName>Slime</defName>
+    <label>Slime</label>
+    <race>Slime</race>
+	<lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/Slime</texPath>
+          <drawSize>0.5</drawSize>
+		  <color>(160,250,160)</color>
+		  <shaderType>CutoutComplex</shaderType>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Dessicated_Slime</texPath>
+          <drawSize>0.5</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/Slime</texPath>
+          <drawSize>0.75</drawSize>
+		  <color>(160,250,160)</color>
+		  <shaderType>CutoutComplex</shaderType>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Dessicated_Slime</texPath>
+          <drawSize>0.75</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/Slime</texPath>
+          <drawSize>1</drawSize>
+		  <color>(160,250,160)</color>
+		  <shaderType>CutoutComplex</shaderType>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Dessicated_Slime</texPath>
+          <drawSize>1</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+</Defs>

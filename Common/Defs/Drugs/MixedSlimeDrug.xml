@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugPillBase">
+    <defName>MixedSlimedrug</defName>
+    <label>Mixed Slimedrug</label>
+    <description>A potent mix of Slimedrug and ragedrug.</description>
+    <graphicData>
+      <texPath>Things/Items/Medicine/MixedSlimedrug</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>600</WorkToMake>
+      <MarketValue>38</MarketValue>
+      <Mass>0.02</Mass>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>MixedSlimedrug</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+			<researchPrerequisite>PenoxycylineProduction</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <Slimedrug>1</Slimedrug>
+      <Ragedrug>1</Ragedrug>
+      <Neutroamine>1</Neutroamine>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>MixedSlimedrug</chemical>
+
+        <listOrder>1000</listOrder>
+        <addictiveness>0.05</addictiveness>
+        <needLevelOffset>1</needLevelOffset>
+        <overdoseSeverityOffset>
+          <min>0.00</min>
+          <max>0.00</max>
+        </overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <HediffDef>
+    <defName>MixedSlimedrug</defName>
+    <description>A potent mix of Slimedrug and ragedrug.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>Mixed Slimedrug</label>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.0</severityPerDay>
+      </li>
+    </comps>
+      <stages>
+       <li>
+	<capMods>
+	  <li>
+	   <capacity>BloodFiltration</capacity>
+	   <offset>0.5</offset>
+	  </li>
+          <li>
+            <capacity>Breathing</capacity>
+            <offset>1.5</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.3</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.1</offset>
+          </li>
+	  <li>
+	   <capacity>Moving</capacity>
+	   <offset>1.5</offset>
+	  </li>
+	  <li>
+	   <capacity>Manipulation</capacity>
+	   <offset>1.5</offset>
+	  </li>
+	</capMods>
+       </li>
+      </stages>
+  </HediffDef>
+  
+  
+  <!-- MixedSlimeDrug addiction -->
+
+
+
+  <ChemicalDef>
+    <defName>MixedSlimedrug</defName>
+    <label>Mixed Slimedrug</label>
+    <addictionHediff>MixedSlimedrugAddiction</addictionHediff>
+  </ChemicalDef>
+
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>Chemical_MixedSlimedrug</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>Mixed Slimedrug</label>
+    <description>Because of a mixed Slimedrug addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
+    <listPriority>45</listPriority>
+  </NeedDef>
+
+
+
+  <HediffDef ParentName="AddictionBase">
+    <defName>MixedSlimedrugAddiction</defName>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <label>Mixed Slimedrug addiction</label>
+    <description>Because of a mixed Slimedrug addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
+    <causesNeed>Chemical_MixedSlimedrug</causesNeed>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.04</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+      <li>
+        <label>withdrawal</label>
+        <painFactor>3</painFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+			<li>
+				<mentalState>Binging_DrugExtreme</mentalState>
+				<mtbDays>40</mtbDays>
+			</li>
+          <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <ThoughtDef>
+    <defName>MixedSlimedrugWithdrawl</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>MixedSlimedrugAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>Mixed Slimedrug Withdrawl</label>
+        <description>I want it, I want the slime. It makes me more alive!</description>
+        <baseMoodEffect>-40</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

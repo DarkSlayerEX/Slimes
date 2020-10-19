@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <BodyPartDef>
+    <defName>SlimeMembrane</defName>
+    <label>membrane</label>
+    <hitPoints>100</hitPoints>
+    <permanentInjuryChanceFactor>0.05</permanentInjuryChanceFactor>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>EatingSource</li>
+      <li>TalkingSource</li>
+	  <li>MetabolismSource</li>
+      <li>ManipulationLimbCore</li>
+	  <li>BreathingSource</li>
+	  <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>SlimeCore</defName>
+    <label>core</label>
+    <hitPoints>20</hitPoints>
+    <permanentInjuryChanceFactor>0.10</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <tags>
+      <li>BloodPumpingSource</li>
+      <li>BloodFiltrationSource</li>
+	  <li>ConsciousnessSource</li>	  
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>SlimeSensors</defName>
+    <label>sensory organs</label>
+    <hitPoints>30</hitPoints>
+    <permanentInjuryChanceFactor>0.10</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <tags>
+		<li>SightSource</li> 
+		<li>HearingSource</li>	  
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RockArmor</defName>
+    <label>rock armor</label>
+    <hitPoints>80</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>MetalCoat</defName>
+    <label>metal coat</label>
+    <hitPoints>100</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+  </BodyPartDef> 
+  
+  <BodyPartDef>
+    <defName>GemSpikes</defName>
+    <label>gem spikes</label>
+    <hitPoints>60</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+  </BodyPartDef>
+</Defs>

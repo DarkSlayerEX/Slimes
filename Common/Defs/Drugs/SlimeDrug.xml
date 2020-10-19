@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="DrugPillBase">
+    <defName>Slimedrug</defName>
+    <label>Slimedrug</label>
+    <description>A highly useful fluid produced by Drugslimes. Vastly improves the immune system's capabilities, but decreases pain tolerance and is slightly addictive as a result.</description>
+    <graphicData>
+      <texPath>Things/Items/Medicine/Slimedrug</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <Mass>0.02</Mass>
+    </statBases>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>Slimedrug</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>Slimedrug</chemical>
+
+        <listOrder>1000</listOrder>
+        <addictiveness>0.1</addictiveness>
+        <needLevelOffset>1</needLevelOffset>
+        <overdoseSeverityOffset>
+          <min>0.00</min>
+          <max>0.00</max>
+        </overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <HediffDef>
+    <defName>Slimedrug</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>Slimedrug</label>
+    <description>Slimedrug increases the immune system but also increases the pain felt.</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.0</severityPerDay>
+      </li>
+    </comps>
+      <stages>
+       <li>
+        <painFactor>1.5</painFactor>
+	<capMods>
+	  <li>
+	   <capacity>BloodFiltration</capacity>
+	   <offset>0.3</offset>
+	  </li>
+          <li>
+            <capacity>Breathing</capacity>
+            <offset>0.05</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.15</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.10</offset>
+          </li>
+	</capMods>
+       </li>
+      </stages>
+  </HediffDef>
+  
+  
+  <!-- SlimeDrug addiction -->
+
+
+
+  <ChemicalDef>
+    <defName>Slimedrug</defName>
+    <label>Slimedrug</label>
+    <addictionHediff>SlimedrugAddiction</addictionHediff>
+  </ChemicalDef>
+
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>Chemical_Slimedrug</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>Slimedrug</label>
+    <description>Because of a Slimedrug addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
+    <listPriority>45</listPriority>
+  </NeedDef>
+
+
+
+  <HediffDef ParentName="AddictionBase">
+    <defName>SlimedrugAddiction</defName>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <label>Slimedrug addiction</label>
+    <description>Because of a Slimedrug addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
+    <causesNeed>Chemical_Slimedrug</causesNeed>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.04</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+      <li>
+        <label>withdrawal</label>
+        <painFactor>3</painFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+		<li>
+			<mentalState>Binging_DrugExtreme</mentalState>
+			<mtbDays>40</mtbDays>
+		</li>
+          <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <ThoughtDef>
+    <defName>SlimedrugWithdrawl</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>SlimedrugAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>Slimedrug Withdrawl</label>
+        <description>I want it, I want the slime. It makes me more alive!</description>
+        <baseMoodEffect>-40</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

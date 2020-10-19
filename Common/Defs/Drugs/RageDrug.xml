@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="DrugPillBase">
+    <defName>Ragedrug</defName>
+    <label>ragedrug</label>
+    <description>The ultimate result of a Rageslime's digestive processes, Ragedrug is commonly used among the glitterworlds as a powerful steroid. Without the knowledge of the correct dosage, however, this crimson fluid seems to only drive the consumer into a fit of rage. Highly unadvisable to drink, but as a weapon, it could prove useful.</description>
+    <graphicData>
+      <texPath>Things/Items/Medicine/Ragedrug</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <Mass>0.02</Mass>
+    </statBases>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>RageFilled</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1000</listOrder>
+        <overdoseSeverityOffset>
+          <min>0.00</min>
+          <max>0.00</max>
+        </overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <HediffDef>
+    <defName>RageFilled</defName>
+    <label>rage filled</label>
+    <labelNoun>a full rage</labelNoun>
+    <description>Having rageslime in {PAWN_possessive} system, {PAWN_pronoun} has gone mad with rage.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(255,0,0)</defaultLabelColor>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Immunizable">
+        <severityPerDayNotImmune>-24</severityPerDayNotImmune>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>Angry</label>
+        <becomeVisible>true</becomeVisible>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>0.2</mtbDays>
+          </li>
+        </mentalStateGivers>
+        <painFactor>0.9</painFactor>
+	<capMods>
+	  <li>
+	   <capacity>Moving</capacity>
+	   <offset>1.2</offset>
+	  </li>
+	  <li>
+	   <capacity>Manipulation</capacity>
+	   <offset>1.2</offset>
+	  </li>
+	  <li>
+	   <capacity>Breathing</capacity>
+	   <offset>1.2</offset>
+	  </li>
+	</capMods>
+      </li>
+      <li>
+        <label>Raged</label>
+        <minSeverity>0.50</minSeverity>
+        <becomeVisible>true</becomeVisible>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>0.01</mtbDays>
+          </li>
+        </mentalStateGivers>
+        <painFactor>0.7</painFactor>
+	<capMods>
+	  <li>
+	   <capacity>Moving</capacity>
+	   <offset>1.5</offset>
+	  </li>
+	  <li>
+	   <capacity>Manipulation</capacity>
+	   <offset>1.5</offset>
+	  </li>
+	  <li>
+	   <capacity>Breathing</capacity>
+	   <offset>1.5</offset>
+	  </li>
+	</capMods>
+      </li>
+      <li>
+        <label>Crazy</label>
+        <minSeverity>0.75</minSeverity>
+        <deathMtbDays>3.0</deathMtbDays>
+        <becomeVisible>true</becomeVisible>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>0.0000001</mtbDays>
+          </li>
+        </mentalStateGivers>
+        <painFactor>0.5</painFactor>
+	<capMods>
+	  <li>
+	   <capacity>Moving</capacity>
+	   <offset>2</offset>
+	  </li>
+	  <li>
+	   <capacity>Manipulation</capacity>
+	   <offset>2</offset>
+	  </li>
+	  <li>
+	   <capacity>Breathing</capacity>
+	   <offset>2</offset>
+	  </li>
+	</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+
+</Defs>

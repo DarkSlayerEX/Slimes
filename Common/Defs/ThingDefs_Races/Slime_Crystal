@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+   
+    <ThingDef ParentName="SlimeBase">
+	<defName>Crystal_Slime</defName>
+	<label>crystal slime</label>
+    <description>lol crystals.</description>
+   <statBases>
+      <MoveSpeed>1.2</MoveSpeed>
+      <ComfyTemperatureMin>-30</ComfyTemperatureMin>
+      <ComfyTemperatureMax>30</ComfyTemperatureMax>
+      <MarketValue>600</MarketValue>
+    </statBases>
+   <race>
+	<baseBodySize>1</baseBodySize>
+	 <baseHungerRate>0.15</baseHungerRate>
+	 <baseHealthScale>1</baseHealthScale>
+	 <wildness>0.65</wildness>
+   </race>
+    <butcherProducts>
+      <InsectJelly>40</InsectJelly>
+    </butcherProducts>
+  </ThingDef>
+    
+   <PawnKindDef ParentName="SlimeKindBase">
+    <defName>Crystal_Slime</defName>
+    <label>crystal slime</label>
+    <race>Crystal_Slime</race>
+	<combatPower>25</combatPower>
+    <ecoSystemWeight>0.03</ecoSystemWeight>
+    <wildGroupSize>
+      <min>1</min>
+      <max>1</max>
+    </wildGroupSize>
+	<lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/CrystalSlime</texPath>
+          <drawSize>0.6</drawSize>
+		  <color>(85,118,69)</color>
+		  <shaderType>CutoutComplex</shaderType>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Dessicated_Slime</texPath>
+          <drawSize>0.6</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/CrystalSlime</texPath>
+          <drawSize>0.8</drawSize>
+		  <color>(85,118,69)</color>
+		  <shaderType>CutoutComplex</shaderType>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Dessicated_Slime</texPath>
+          <drawSize>0.8</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/CrystalSlime</texPath>
+          <drawSize>1</drawSize>
+		  <color>(85,118,69)</color>
+		  <shaderType>CutoutComplex</shaderType>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Dessicated_Slime</texPath>
+          <drawSize>1</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+</Defs>

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <DamageDef Name="LocalInjuryBase" Abstract="True">
+    <workerClass>DamageWorker_AddInjury</workerClass>
+  </DamageDef>
+
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>ColdBlunt</defName>
+    <label>cold blunt</label>
+    <workerClass>DamageWorker_Blunt</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been beaten to death.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Frostbite</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <overkillPctToDestroyPart>0.4~1.0</overkillPctToDestroyPart>
+    <bluntStunDuration>2.0</bluntStunDuration>
+    <bluntInnerHitChance>0.4</bluntInnerHitChance>
+    <bluntInnerHitDamageFractionToConvert>
+      <min>0.1</min>
+      <max>0.2</max>
+    </bluntInnerHitDamageFractionToConvert>
+    <bluntInnerHitDamageFractionToAdd>
+      <min>0.2</min>
+      <max>0.35</max>
+    </bluntInnerHitDamageFractionToAdd>
+    <bluntStunChancePerDamagePctOfCorePartToHeadCurve>
+      <points>
+        <li>(0.04, 0.20)</li>
+        <li>(0.5, 1)</li>
+      </points>
+    </bluntStunChancePerDamagePctOfCorePartToHeadCurve>
+    <bluntStunChancePerDamagePctOfCorePartToBodyCurve>
+      <points>
+        <li>(0.4, 0)</li>
+        <li>(0.9, 0.15)</li>
+      </points>
+    </bluntStunChancePerDamagePctOfCorePartToBodyCurve>
+    <additionalHediffs>
+      <li>
+        <hediff>Hypothermia</hediff>
+        <severityPerDamageDealt>0.01</severityPerDamageDealt>
+      </li>
+    </additionalHediffs>
+  </DamageDef>
+
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>HotBlunt</defName>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <label>hot blunt</label>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been beaten to death.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Burn</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <overkillPctToDestroyPart>0.4~1.0</overkillPctToDestroyPart>
+    <bluntStunDuration>2.0</bluntStunDuration>
+    <bluntInnerHitChance>0.4</bluntInnerHitChance>
+    <bluntInnerHitDamageFractionToConvert>
+      <min>0.1</min>
+      <max>0.2</max>
+    </bluntInnerHitDamageFractionToConvert>
+    <bluntInnerHitDamageFractionToAdd>
+      <min>0.2</min>
+      <max>0.35</max>
+    </bluntInnerHitDamageFractionToAdd>
+    <bluntStunChancePerDamagePctOfCorePartToHeadCurve>
+      <points>
+        <li>(0.04, 0.20)</li>
+        <li>(0.5, 1)</li>
+      </points>
+    </bluntStunChancePerDamagePctOfCorePartToHeadCurve>
+    <bluntStunChancePerDamagePctOfCorePartToBodyCurve>
+      <points>
+        <li>(0.4, 0)</li>
+        <li>(0.9, 0.15)</li>
+      </points>
+    </bluntStunChancePerDamagePctOfCorePartToBodyCurve>
+    <additionalHediffs>
+      <li>
+        <hediff>Heatstroke</hediff>
+        <severityPerDamageDealt>0.01</severityPerDamageDealt>
+      </li>
+    </additionalHediffs>
+  </DamageDef>
+
+  <DamageDef ParentName="Bite">
+    <defName>RageBite</defName>
+    <label>rage bite</label>
+    <additionalHediffs>
+      <li>
+        <hediff>RageFilled</hediff>
+        <severityPerDamageDealt>1.0</severityPerDamageDealt>
+      </li>
+    </additionalHediffs>
+  </DamageDef>
+
+    <DamageDef ParentName="LocalInjuryBase">
+        <defName>Ragebomb</defName>
+        <label>bullet</label>
+        <hediff>Bruise</hediff>
+        <hediffSolid>Crack</hediffSolid>
+        <externalViolence>true</externalViolence>
+        <isExplosive>true</isExplosive>
+        <hasForcefulImpact>true</hasForcefulImpact>
+        <defaultDamage>1</defaultDamage>
+        <explosionColorEdge>(0.8, 0.8, 0.8, 0.8)</explosionColorEdge>
+        <explosionCellMote>Mote_ExtinguisherPuff</explosionCellMote>
+        <soundExplosion>Explosion_Flame</soundExplosion>
+        <harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+        <deathMessage>{0} has suffocated in ragegas.</deathMessage>
+        <armorCategory>Blunt</armorCategory>
+        <additionalHediffs>
+            <li>
+                <hediff>RageFilled</hediff>
+                <severityPerDamageDealt>1.0</severityPerDamageDealt>
+            </li>
+        </additionalHediffs>
+    </DamageDef>
+	
+	<!-- ===== Begin Exotic's expansion slime damagedefs. ===== -->
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>HellBlunt</defName>
+		<label>hell blunt</label>
+		<workerClass>DamageWorker_Blunt</workerClass>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has been beaten to death.</deathMessage>
+		<hediff>Crush</hediff>
+		<hediffSkin>Bruise</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<overkillPctToDestroyPart>0.4~1.0</overkillPctToDestroyPart>
+		<bluntStunDuration>2.0</bluntStunDuration>
+		<bluntInnerHitChance>0.4</bluntInnerHitChance>
+		<bluntInnerHitDamageFractionToConvert>
+			<min>0.1</min>
+			<max>0.2</max>
+		</bluntInnerHitDamageFractionToConvert>
+		<bluntInnerHitDamageFractionToAdd>
+			<min>0.2</min>
+			<max>0.35</max>
+		</bluntInnerHitDamageFractionToAdd>
+		<bluntStunChancePerDamagePctOfCorePartToHeadCurve>
+			<points>
+				<li>(0.04, 0.20)</li>
+				<li>(0.5, 1)</li>
+			</points>
+		</bluntStunChancePerDamagePctOfCorePartToHeadCurve>
+		<bluntStunChancePerDamagePctOfCorePartToBodyCurve>
+			<points>
+				<li>(0.4, 0)</li>
+				<li>(0.9, 0.15)</li>
+			</points>
+		</bluntStunChancePerDamagePctOfCorePartToBodyCurve>
+		<additionalHediffs>
+			<li>
+				<hediff>LuciferiumAddiction</hediff>
+				<severityPerDamageDealt>0.01</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+  
+</Defs>

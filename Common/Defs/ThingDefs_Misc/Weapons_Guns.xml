@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ==================== Rageburst launcher ========================== -->
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_RageburstLauncher</defName>
+		<label>rageburst bolt</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>40</speed>
+			<damageDef>Ragebomb</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<explosionRadius>5.0</explosionRadius>
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.6</preExplosionSpawnChance>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_RageburstLauncher</defName>
+		<label>rageburst launcher</label>
+		<description>This custom-made weapon fires canisters of Ragedrug that burst on impact, dealing minimal damage but causing all within range of the burst to be dowsed in the fluid. Anyone dowsed with the fluid will temporarily go berserk, either until the fluid dries or the berserker is incapacitated.</description>
+		<graphicData>
+			<texPath>Things/Items/Equipment/WeaponRanged/RageburstLauncher.tex</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.4</generateCommonality>
+		<statBases>
+			<WorkToMake>22000</WorkToMake>
+			<Mass>3.4</Mass>
+			<RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<Plasteel>50</Plasteel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+			<Ragedrug>10</Ragedrug>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_RageburstLauncher</defaultProjectile>
+				<warmupTime>3.0</warmupTime>
+				<range>24</range>
+        <forcedMissRadius>1.9</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+		</verbs>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>1.9</cooldownTime>
+      </li>
+    </tools>
+	</ThingDef>
+
+</Defs>

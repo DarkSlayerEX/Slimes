@@ -18,10 +18,9 @@ namespace Slimes
 		{
 			if (__instance.kindDef.defName.StartsWith(GenerateImpliedDefs_PreResolve_Patch.slimeDefPrefix))
             {
-				Log.Message(__instance + " - " + __instance.ageTracker?.CurKindLifeStage?.bodyGraphicData?.color);
-				foreach (var lifeStage in __instance.kindDef.lifeStages)
+				foreach (var statBase in __instance.def.statBases)
 				{
-					Log.Message("TEST 1: " + __instance.kindDef + " - " + lifeStage.bodyGraphicData.color);
+					Log.Message("TEST 1: " + __instance.kindDef + " - " + statBase);
 				}
 			}
 		}
@@ -49,14 +48,6 @@ namespace Slimes
 				newDef2.race = newDef1;
 				AddImpliedDef(newDef1);
 				AddImpliedDef(newDef2);
-				Log.Message("Adding: " + newDef1);
-				foreach (var d in DefDatabase<PawnKindDef>.AllDefs.Where(x => x.defName.StartsWith(slimeDefPrefix)))
-				{
-					foreach (var lifeStage in d.lifeStages)
-					{
-						Log.Message("TEST 2: " + d + " - " + lifeStage.bodyGraphicData.color);
-					}
-				}
 			}
 		}
 	
@@ -80,10 +71,32 @@ namespace Slimes
 				}
 				catch { }
 			}
+			AssignNewVariables(ref thingDef, baseSlime);
 			thingDef.defName = slimeDefPrefix + baseThingDef.defName;
 			thingDef.label = slimeDefPrefix + " " + baseThingDef.label;
+			foreach (var stuffCategoryModifier in DefDatabase<StuffCategoryModifiers>.AllDefs)
+            {
+				if (baseThingDef.stuffProps.categories.Where(x => x.defName == stuffCategoryModifier.defName).Any())
+                {
+					AdjustStatBases(ref thingDef, stuffCategoryModifier.statsModifiers);
+					//foreach (var t in stuffCategoryModifier.raceModifiers.offsets.GetType())
+                    //{
+					//
+                    //}
+				}
+            }
+
+			foreach (var stuffModifier in DefDatabase<StuffModifiers>.AllDefs)
+			{
+				if (thingDef.defName == stuffModifier.defName)
+				{
+					AdjustStatBases(ref thingDef, stuffModifier.statsModifiers);
+				}
+			}
 			return thingDef;
 		}
+
+
 		private static PawnKindDef BaseSlimeKindDef(ThingDef baseThingDef)
 		{
 			var pawnKind = new PawnKindDef();
@@ -97,67 +110,103 @@ namespace Slimes
 				}
 				catch { }
 			}
-			SetCopyOf(baseSlime, ref pawnKind);
+			AssignNewVariables(ref pawnKind, baseSlime);
 			pawnKind.defName = slimeDefPrefix + baseThingDef.defName;
 			pawnKind.label = slimeDefPrefix + " " + baseThingDef.label;
 			foreach (var lifeStage in pawnKind.lifeStages)
 			{
 				lifeStage.bodyGraphicData.color = new Color(baseThingDef.stuffProps.color.r, baseThingDef.stuffProps.color.g, baseThingDef.stuffProps.color.b, baseThingDef.stuffProps.color.a);
-				Log.Message(pawnKind + " - " + lifeStage.bodyGraphicData.color);
 			}
 			return pawnKind;
 		}
 
-		private static void SetCopyOf(PawnKindDef source, ref PawnKindDef target)
+		private static void AdjustStatBases(ref ThingDef target, StatsModifiers statsModifiers)
         {
-			target.lifeStages = new List<PawnKindLifeStage>
-			{
-				new PawnKindLifeStage()
+			if (statsModifiers.offsets != null)
+            {
+				foreach (var offset in statsModifiers.offsets)
 				{
-					bodyGraphicData = new GraphicData()
+					foreach (var statBase in target.statBases)
 					{
-						drawSize = Vector2.one,
-						texPath = "Things/Pawn/Animal/Slime",
-						color = Color.white,
-						shaderType = ShaderTypeDefOf.CutoutComplex
-					},
-					dessicatedBodyGraphicData = new GraphicData()
-					{
-						drawSize = Vector2.one,
-						texPath = "Things/Pawn/Animal/Dessicated_Slime",
-					}
-				},
-				new PawnKindLifeStage()
-				{
-					bodyGraphicData = new GraphicData()
-					{
-						drawSize = Vector2.one,
-						texPath = "Things/Pawn/Animal/Slime",
-						color = Color.white,
-						shaderType = ShaderTypeDefOf.CutoutComplex
-					},
-					dessicatedBodyGraphicData = new GraphicData()
-					{
-						drawSize = Vector2.one,
-						texPath = "Things/Pawn/Animal/Dessicated_Slime",
-					}
-				},
-				new PawnKindLifeStage()
-				{
-					bodyGraphicData = new GraphicData()
-					{
-						drawSize = Vector2.one,
-						texPath = "Things/Pawn/Animal/Slime",
-						color = Color.white,
-						shaderType = ShaderTypeDefOf.CutoutComplex
-					},
-					dessicatedBodyGraphicData = new GraphicData()
-                    {
-						drawSize = Vector2.one,
-						texPath = "Things/Pawn/Animal/Dessicated_Slime",
+						if (statBase.stat == offset.stat)
+						{
+							statBase.value += offset.value;
+							Log.Message("Adding: " + target + " - Offset: " + offset.stat + " - " + offset.value);
+						}
 					}
 				}
-			};
+			}
+
+			if (statsModifiers.multipliers != null)
+            {
+				foreach (var multiplier in statsModifiers.multipliers)
+				{
+					foreach (var statBase in target.statBases)
+					{
+						if (statBase.stat == multiplier.stat)
+						{
+							statBase.value *= multiplier.value;
+							Log.Message("Adding: " + target + " - Multiplier: " + multiplier.stat + " - " + multiplier.value);
+						}
+					}
+				}
+			}
+
+			if (statsModifiers.fixedValues != null)
+            {
+				foreach (var fixedValue in statsModifiers.fixedValues)
+				{
+                    foreach (var statBase in target.statBases)
+					{
+						if (statBase.stat == fixedValue.stat)
+						{
+							statBase.value = fixedValue.value;
+							Log.Message("Adding: " + target + " - Fixed value: " + fixedValue.stat + " - " + fixedValue.value);
+						}
+					}
+				}
+			}
+		}
+
+		private static void AssignNewVariables(ref ThingDef target, ThingDef source)
+		{
+			target.statBases = new List<StatModifier>();
+			foreach (var statBase in source.statBases)
+			{
+				target.statBases.Add(new StatModifier 
+				{
+					stat = statBase.stat,
+					value = statBase.value
+				});
+			}
+		}
+		private static void AssignNewVariables(ref PawnKindDef target, PawnKindDef source)
+        {
+			target.lifeStages = new List<PawnKindLifeStage>();
+			foreach (var lifeStage in source.lifeStages)
+            {
+				target.lifeStages.Add(new PawnKindLifeStage
+				{
+					bodyGraphicData = new GraphicData
+					{
+						shaderType = lifeStage.bodyGraphicData.shaderType,
+						texPath = lifeStage.bodyGraphicData.texPath,
+						shadowData = lifeStage.bodyGraphicData.shadowData,
+						drawSize = lifeStage.bodyGraphicData.drawSize,
+						colorTwo = lifeStage.bodyGraphicData.colorTwo,
+						color = lifeStage.bodyGraphicData.color
+					},
+					dessicatedBodyGraphicData = new GraphicData
+					{
+						shaderType = lifeStage.dessicatedBodyGraphicData.shaderType,
+						texPath = lifeStage.dessicatedBodyGraphicData.texPath,
+						shadowData = lifeStage.dessicatedBodyGraphicData.shadowData,
+						drawSize = lifeStage.dessicatedBodyGraphicData.drawSize,
+						colorTwo = lifeStage.dessicatedBodyGraphicData.colorTwo,
+						color = lifeStage.dessicatedBodyGraphicData.color
+					},
+				});
+			}
 		}
 	}
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<Slimes.StuffCategoryModifiers>
+		<defName>Metallic</defName>
+		<statsModifiers>
+			<offsets>
+				<MoveSpeed>500</MoveSpeed>
+			</offsets>
+		</statsModifiers>
+	</Slimes.StuffCategoryModifiers>
+
+	<Slimes.StuffModifiers>
+		<defName>Slime_BlocksGranite</defName>
+		<statsModifiers>
+			<offsets>
+				<MoveSpeed>50</MoveSpeed>
+			</offsets>
+		</statsModifiers>
+	</Slimes.StuffModifiers>
+
+</Defs>

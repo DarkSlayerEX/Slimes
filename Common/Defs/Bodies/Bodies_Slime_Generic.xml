@@ -8,6 +8,9 @@
       <def>SlimeCore</def>
       <height>Middle</height>
       <depth>Inside</depth>
+	  <groups>
+		<li>Slimebody</li>
+      </groups>
       <parts>
 		<li>
           <def>SlimeMembrane</def>

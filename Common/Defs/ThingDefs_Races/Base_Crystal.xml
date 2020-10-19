@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	<!-- STUFFTYPE: "Crystalline" -->
   <ThingDef ParentName="AnimalThingBase">
-    <defName>Jade_Slime</defName>
-    <label>jade slime</label>
-    <description>A jade Slime</description>
+    <defName>Crystal_Slime</defName>  <!-- Crystal replaced by stuff type name-->
+    <label>crystal slime</label> <!-- Crystal replaced by stuff type name-->
+    <description>A crystal slime</description>
     <statBases>
       <MoveSpeed>1.2</MoveSpeed>
       <ComfyTemperatureMin>-30</ComfyTemperatureMin>
@@ -21,15 +21,15 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <cooldownTime>1.65</cooldownTime>
-        <power>12</power>
-        <linkedBodyPartsGroup>SlimeMembrane</linkedBodyPartsGroup>
+        <cooldownTime>2.0</cooldownTime>
+        <power>25</power>
+        <linkedBodyPartsGroup>Slimebody</linkedBodyPartsGroup>
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
         <surpriseAttack>
           <extraMeleeDamages>
             <li>
               <def>Stun</def>
-              <amount>10</amount>
+              <amount>15</amount>
             </li>
           </extraMeleeDamages>
         </surpriseAttack>
@@ -38,7 +38,7 @@
     <comps>
     </comps>
     <race>
-      <body>StoneSlime</body>
+      <body>StoneSlime</body>  <!-- Haven't made a Crystal Body -->
       <petness>0</petness>
       <predator>true</predator>
       <baseBodySize>1.0</baseBodySize>
@@ -52,7 +52,7 @@
       <manhunterOnTameFailChance>0.025</manhunterOnTameFailChance>
       <manhunterOnDamageChance>0.5</manhunterOnDamageChance>
       <nameOnTameChance>0.05</nameOnTameChance>
-      <lifeExpectancy>0</lifeExpectancy>  <!-- maybe works? -->
+      <lifeExpectancy>1000</lifeExpectancy>  <!-- maybe works? -->
       <lifeStageAges>
         <li>
           <def>AnimalBaby</def>
@@ -80,14 +80,14 @@
       <li>AnimalFighter</li>
     </tradeTags>
     <butcherProducts>
-      <Jade>10</Jade>
+      <Jade>10</Jade>  <!-- Change to related Stuff def -->
     </butcherProducts>
   </ThingDef>
 
   <PawnKindDef ParentName="AnimalKindBase">
-    <defName>Jade_Slime</defName>
-    <label>jade slime</label>
-    <race>Jade_Slime</race>
+    <defName>Crystal_Slime</defName> <!-- Crystal replaced by stuff type name-->
+    <label>crystal slime</label> <!-- Crystal replaced by stuff type name-->
+    <race>Crystal_Slime</race>
     <combatPower>55</combatPower>
     <ecoSystemWeight>0.03</ecoSystemWeight>
     <wildGroupSize>
@@ -99,7 +99,6 @@
         <bodyGraphicData>
           <texPath>Things/Pawn/Animal/CrystalSlime</texPath>
           <drawSize>0.6</drawSize>
-		  <color>(85,118,69)</color>
 		  <shaderType>CutoutComplex</shaderType>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
@@ -111,7 +110,6 @@
         <bodyGraphicData>
           <texPath>Things/Pawn/Animal/CrystalSlime</texPath>
           <drawSize>0.8</drawSize>
-		  <color>(85,118,69)</color>
 		  <shaderType>CutoutComplex</shaderType>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
@@ -123,7 +121,6 @@
         <bodyGraphicData>
           <texPath>Things/Pawn/Animal/CrystalSlime</texPath>
           <drawSize>1</drawSize>
-		  <color>(85,118,69)</color>
 		  <shaderType>CutoutComplex</shaderType>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>

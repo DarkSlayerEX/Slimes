@@ -15,6 +15,6 @@ namespace Slimes
         public StatsModifiers statModifiers;
         public RaceModifiers raceModifiers;
         public SourceMaterial material;
-        public ButherThings butcherThings;
+        public ButcherThings butcherThings;
     }
 }

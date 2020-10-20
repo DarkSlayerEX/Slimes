@@ -8,9 +8,9 @@ using Verse;
 
 namespace Slimes
 {
-    public class ButherThings
+    public class ButcherThings
     {
-        public List<ButherData> oneOf;
-        public List<ButherData> allOf;
+        public List<ButcherData> oneOf;
+        public List<ButcherData> allOf;
     }
 }

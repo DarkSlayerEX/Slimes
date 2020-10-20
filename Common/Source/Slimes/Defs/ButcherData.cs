@@ -8,7 +8,7 @@ using Verse;
 
 namespace Slimes
 {
-    public class ButherData
+    public class ButcherData
     {
         public ThingDef thingDef;
         public int baseYield;

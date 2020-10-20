@@ -17,14 +17,18 @@
 		</statModifiers>
 		<raceModifiers />
 		<butcherThings>
-			<!-- in addition to leather/meat -->
-			<oneOf />
-			<allOf>
-				<li>
-					<thingDef>Steel</thingDef> 
-					<baseYield>8</baseYield>
-				</li>
-			</allOf>
+		    <butcherBasic> <!-- only leather/meat - Vanilla recipe -->
+				<Steel>2</Steel> 
+		    </butcherBasic>
+			<butcherSpecialized> <!-- leather/meat, and the following defs - Specialized recipe -->
+				<oneOf />
+				<allOf>
+					<li>
+						<thingDef>Steel</thingDef> 
+						<yieldRange>(6,8)</yieldRange>
+					</li>
+				</allOf>
+			</butcherSpecialized>
 		</butcherThings>
 	</Slimes.SlimeGeneratorDef>
 
@@ -44,14 +48,18 @@
 		</statModifiers>
 		<raceModifiers />
 		<butcherThings>
-			<!-- in addition to leather/meat -->
-			<oneOf />
-			<allOf>
-				<li>
-					<thingDef>ChunkSlate</thingDef>
-					<baseYield>2</baseYield>
-				</li>
-			</allOf>
+		    <butcherBasic> <!-- only leather/meat - Vanilla recipe -->
+				<ChunkSlate>1</ChunkSlate> 
+		    </butcherBasic>
+			<butcherSpecialized> <!-- leather/meat, and the following defs - Specialized recipe -->
+				<oneOf />
+				<allOf>
+					<li>
+						<thingDef>ChunkSlate</thingDef> 
+						<yieldRange>(2,4)</yieldRange>
+					</li>
+				</allOf>
+			</butcherSpecialized>
 		</butcherThings>
 	</Slimes.SlimeGeneratorDef>
 
@@ -71,14 +79,18 @@
 		</statModifiers>
 		<raceModifiers />
 		<butcherThings>
-			<!-- in addition to leather/meat -->
-			<oneOf />
-			<allOf>
-				<li>
-					<thingDef>ChunkSandstone</thingDef>
-					<baseYield>2</baseYield>
-				</li>
-			</allOf>
+		    <butcherBasic> <!-- only leather/meat - Vanilla recipe -->
+				<ChunkSandstone>1</ChunkSandstone> 
+		    </butcherBasic>
+			<butcherSpecialized> <!-- leather/meat, and the following defs - Specialized recipe -->
+				<oneOf />
+				<allOf>
+					<li>
+						<thingDef>ChunkSandstone</thingDef> 
+						<yieldRange>(2,4)</yieldRange>
+					</li>
+				</allOf>
+			</butcherSpecialized>
 		</butcherThings>
 	</Slimes.SlimeGeneratorDef>
 
@@ -98,14 +110,18 @@
 		</statModifiers>
 		<raceModifiers />
 		<butcherThings>
-			<!-- in addition to leather/meat -->
-			<oneOf />
-			<allOf>
-				<li>
-					<thingDef>Jade</thingDef>
-					<baseYield>5</baseYield>
-				</li>
-			</allOf>
+		    <butcherBasic> <!-- only leather/meat - Vanilla recipe -->
+				<Jade>2</Jade> 
+		    </butcherBasic>
+			<butcherSpecialized> <!-- leather/meat, and the following defs - Specialized recipe -->
+				<oneOf />
+				<allOf>
+					<li>
+						<thingDef>Jade</thingDef> 
+						<yieldRange>(3,6)</yieldRange>
+					</li>
+				</allOf>
+			</butcherSpecialized>
 		</butcherThings>
 	</Slimes.SlimeGeneratorDef>
 

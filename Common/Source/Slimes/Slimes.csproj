@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="DefOf.cs" />
     <Compile Include="Defs\RaceModifiers.cs" />
+    <Compile Include="Defs\ButherData.cs" />
+    <Compile Include="Defs\SourceMaterial.cs" />
+    <Compile Include="Defs\ButherThings.cs" />
     <Compile Include="Defs\StatsModifiers.cs" />
+    <Compile Include="Defs\SlimeGeneratorDef.cs" />
     <Compile Include="Defs\StuffModifiers.cs" />
     <Compile Include="Defs\StuffCategoryModifiers.cs" />
     <Compile Include="HarmonyPatches\GenerateImpliedDefs_PreResolve_Patch.cs" />

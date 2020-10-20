@@ -16,7 +16,7 @@ namespace Slimes
 	{
 		public static void Postfix(ref Pawn __instance)
 		{
-			if (__instance.kindDef.defName.StartsWith(GenerateImpliedDefs_PreResolve_Patch.slimeDefPrefix))
+			if (__instance.kindDef.defName.EndsWith(GenerateImpliedDefs_PreResolve_Patch.slimeDefPostfix))
             {
 				foreach (var statBase in __instance.def.statBases)
 				{
@@ -29,28 +29,14 @@ namespace Slimes
 	[HarmonyPatch(typeof(DefGenerator), "GenerateImpliedDefs_PreResolve")]
 	public static class GenerateImpliedDefs_PreResolve_Patch
 	{
-		public static string slimeDefPrefix = "Slime_";
+		public static string slimeDefPostfix = "_Slime";
 	
 		public static List<StuffCategoryDef> allowedCategories = new List<StuffCategoryDef>
 		{
 			StuffCategoryDefOf.Stony,
 			StuffCategoryDefOf.Metallic
 		};
-	
-		public static void Prefix()
-		{
-			var list = DefDatabase<ThingDef>.AllDefs.Where(x => x.stuffProps?.categories != null &&
-				x.stuffProps.categories.Where(y => allowedCategories.Contains(y)).Any()).ToList();
-			foreach (var thingDef in list)
-			{
-				var newDef1 = BaseSlimeDef(thingDef);
-				var newDef2 = BaseSlimeKindDef(thingDef);
-				newDef2.race = newDef1;
-				AddImpliedDef(newDef1);
-				AddImpliedDef(newDef2);
-			}
-		}
-	
+
 		public static void AddImpliedDef<T>(T def) where T : Def, new()
 		{
 			def.generated = true;
@@ -58,64 +44,66 @@ namespace Slimes
 			def.PostLoad();
 			DefDatabase<T>.Add(def);
 		}
-		private static ThingDef BaseSlimeDef(ThingDef baseThingDef)
+		public static void Prefix()
+		{
+
+			foreach (var slimeGenerator in DefDatabase<SlimeGeneratorDef>.AllDefs)
+            {
+				Log.Message("slimeGenerator: " + slimeGenerator + " - " + slimeGenerator.originThingDef);
+				var newDef1 = BaseSlimeDef(slimeGenerator);
+				var newDef2 = BaseSlimeKindDef(slimeGenerator);
+				newDef2.race = newDef1;
+				AddImpliedDef(newDef1);
+				AddImpliedDef(newDef2);
+			}
+		}
+
+		private static ThingDef BaseSlimeDef(SlimeGeneratorDef slimeGenerator)
 		{
 			var thingDef = new ThingDef();
-			var baseSlime = SlimeDefOf.Slime;
 			foreach (var fieldInfo in typeof(ThingDef).GetFields())
 			{
 				try
 				{
 					var newField = thingDef.GetType().GetField(fieldInfo.Name);
-					newField.SetValue(thingDef, fieldInfo.GetValue(baseSlime));
+					newField.SetValue(thingDef, fieldInfo.GetValue(slimeGenerator.originThingDef));
 				}
 				catch { }
 			}
-			AssignNewVariables(ref thingDef, baseSlime);
-			thingDef.defName = slimeDefPrefix + baseThingDef.defName;
-			thingDef.label = slimeDefPrefix + " " + baseThingDef.label;
-			foreach (var stuffCategoryModifier in DefDatabase<StuffCategoryModifiers>.AllDefs)
-            {
-				if (baseThingDef.stuffProps.categories.Where(x => x.defName == stuffCategoryModifier.defName).Any())
-                {
-					AdjustStatBases(ref thingDef, stuffCategoryModifier.statsModifiers);
-					//foreach (var t in stuffCategoryModifier.raceModifiers.offsets.GetType())
-                    //{
-					//
-                    //}
-				}
-            }
-
-			foreach (var stuffModifier in DefDatabase<StuffModifiers>.AllDefs)
-			{
-				if (thingDef.defName == stuffModifier.defName)
-				{
-					AdjustStatBases(ref thingDef, stuffModifier.statsModifiers);
-				}
-			}
+			thingDef.defName = slimeGenerator.material.defPrefix + slimeDefPostfix;
+			thingDef.label = slimeGenerator.material.label;
+			AssignNewVariables(ref thingDef, slimeGenerator.originThingDef);
+			AdjustStatBases(ref thingDef, slimeGenerator.statModifiers);
 			return thingDef;
 		}
 
 
-		private static PawnKindDef BaseSlimeKindDef(ThingDef baseThingDef)
+		private static PawnKindDef BaseSlimeKindDef(SlimeGeneratorDef slimeGenerator)
 		{
 			var pawnKind = new PawnKindDef();
-			var baseSlime = SlimePawnKindDefOf.Slime;
 			foreach (var fieldInfo in typeof(PawnKindDef).GetFields())
 			{
 				try
 				{
 					var newField = pawnKind.GetType().GetField(fieldInfo.Name);
-					newField.SetValue(pawnKind, fieldInfo.GetValue(baseSlime));
+					newField.SetValue(pawnKind, fieldInfo.GetValue(slimeGenerator.originPawnKind));
 				}
 				catch { }
 			}
-			AssignNewVariables(ref pawnKind, baseSlime);
-			pawnKind.defName = slimeDefPrefix + baseThingDef.defName;
-			pawnKind.label = slimeDefPrefix + " " + baseThingDef.label;
+			AssignNewVariables(ref pawnKind, slimeGenerator.originPawnKind);
+			pawnKind.defName = slimeGenerator.material.defPrefix + slimeDefPostfix;
+			pawnKind.label = slimeGenerator.material.label;
 			foreach (var lifeStage in pawnKind.lifeStages)
 			{
-				lifeStage.bodyGraphicData.color = new Color(baseThingDef.stuffProps.color.r, baseThingDef.stuffProps.color.g, baseThingDef.stuffProps.color.b, baseThingDef.stuffProps.color.a);
+				if (slimeGenerator.material.color != null)
+                {
+					lifeStage.bodyGraphicData.color = new Color(slimeGenerator.material.color.r, slimeGenerator.material.color.g, slimeGenerator.material.color.b, slimeGenerator.material.color.a);
+				}
+				else
+                {
+					lifeStage.bodyGraphicData.color = new Color(slimeGenerator.material.sourceThingDef.stuffProps.color.r, slimeGenerator.material.sourceThingDef.stuffProps.color.g,
+						slimeGenerator.material.sourceThingDef.stuffProps.color.b, slimeGenerator.material.sourceThingDef.stuffProps.color.a);
+				}
 			}
 			return pawnKind;
 		}

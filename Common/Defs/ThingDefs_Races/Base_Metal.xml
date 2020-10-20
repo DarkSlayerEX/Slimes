@@ -2,8 +2,8 @@
 <Defs>
 	<!-- STUFFTYPE: "Metallic" -->
   <ThingDef ParentName="AnimalThingBase">
-    <defName>Steel_Slime</defName>
-    <label>steel slime</label>
+    <defName>Metal_Slime</defName>
+    <label>metal slime</label>
     <description>A metallic slime</description>
     <statBases>
       <MoveSpeed>0.8</MoveSpeed>
@@ -85,9 +85,9 @@
   </ThingDef>
 
   <PawnKindDef ParentName="AnimalKindBase">
-    <defName>Steel_Slime</defName>
-    <label>steel slime</label>
-    <race>Steel_Slime</race>
+    <defName>Metal_Slime</defName>
+    <label>metal slime</label>
+    <race>Metal_Slime</race>
     <combatPower>55</combatPower>
     <ecoSystemWeight>0.1</ecoSystemWeight>
     <wildGroupSize>

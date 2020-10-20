@@ -39,6 +39,7 @@
     </comps>
     <race>
       <body>StoneSlime</body>
+	  <fleshType>Slime</fleshType>
       <petness>0</petness>
       <predator>true</predator>
       <baseBodySize>2.5</baseBodySize>

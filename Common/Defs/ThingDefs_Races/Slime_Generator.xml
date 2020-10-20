@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<!-- Steel -->
+	<Slimes.SlimeGeneratorDef>
+		<defName>Steel_SlimeGenerator</defName>
+		<originThingDef>Metal_Slime</originThingDef>
+		<originPawnKind>Metal_Slime</originPawnKind>
+		<statModifiers>
+			<offsets>
+				<MoveSpeed>2</MoveSpeed>
+			</offsets>
+		</statModifiers>
+		<raceModifiers />
+		<material>
+			<defPrefix>TESTSteel</defPrefix>
+			<!-- Might not be needed, but either way..  generated defname =  defPrefix+"_slime" -->
+			<label>steelslime</label>
+			<sourceThingDef>Steel</sourceThingDef>
+			<color>(105,105,105)</color>
+			<!-- can this be optional If color tag missing, use color declared in Source Def -->
+		</material>	
+		<butcherThings>
+			<!-- in addition to leather/meat -->
+			<oneOf />
+			<allOf>
+				<li>
+					<thingDef>Steel</thingDef>
+					<baseYield>2</baseYield>
+				</li>
+				<li>
+					<thingDef>Silver</thingDef>
+					<!-- not an item yet, just an example -->
+					<baseYield>1</baseYield>
+				</li>
+			</allOf>
+		</butcherThings>
+	</Slimes.SlimeGeneratorDef>
+
 	<!-- Slate -->
 	<Slimes.SlimeGeneratorDef>
-		<defName>ChunkSlate_SlimeGenerator</defName>
+		<defName>Slate_SlimeGenerator</defName>
 		<originThingDef>Stone_Slime</originThingDef>
 		<originPawnKind>Stone_Slime</originPawnKind>
 		<statModifiers>
@@ -35,7 +71,7 @@
 
 	<!-- Sandstone -->
 	<Slimes.SlimeGeneratorDef>
-		<defName>ChunkSandstone_SlimeGenerator</defName>
+		<defName>Sandstone_SlimeGenerator</defName>
 		<originThingDef>Stone_Slime</originThingDef>
 		<originPawnKind>Stone_Slime</originPawnKind>
 		<statModifiers>
@@ -61,7 +97,7 @@
 					<baseYield>2</baseYield>
 				</li>
 				<li>
-					<thingDef>SlimeCore</thingDef>
+					<thingDef>Gold</thingDef>
 					<!-- not an item yet, just an example -->
 					<baseYield>1</baseYield>
 				</li>

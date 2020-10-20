@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+		<!-- Slate -->
+	<Slimes.SlimeGeneratorDef>
+		<OriginThingDef>Stone_Slime</OriginThingDef>
+		<StatModifiers>
+			<offsets>
+				<MoveSpeed>2</MoveSpeed>
+			</offsets>
+		</StatModifiers>
+		<RaceModifiers />
+		<Material>
+			<defprefix>slate</defprefix> <!--defprefix+"_slime" -->
+			<label>slateslime</label>
+			<SourceThingDef>ChunkSlate</SourceThingDef>
+			<color>(70,70,70)</color> <!-- can this be optional If color tag missing, use color declared in Source Def -->
+		</Material>	
+		<ButcherThings> <!-- in addition to leather/meat -->
+			<OneOf />
+			<AllOf>
+				<li>
+					<ThingDef>ChunkSlate</ThingDef>
+					<BaseYield>2</BaseYield>
+				</li>
+			</AllOf>
+		</ButcherThings>
+	</Slimes.SlimeGeneratorDef>	
+	
+	
+	<!-- Sandstone -->
+	<Slimes.SlimeGeneratorDef>
+		<OriginThingDef>Stone_Slime</OriginThingDef>
+		<StatModifiers>
+			<offsets>
+				<MoveSpeed>2</MoveSpeed>
+			</offsets>
+		</StatModifiers>
+		<RaceModifiers />
+		<Material>
+			<defprefix>sandstone</defprefix> <!-- Might not be needed, but either way..  generated defname =  defprefix+"_slime" -->
+			<label>sandslime</label>
+			<SourceThingDef>ChunkSandstone</SourceThingDef>
+			<color>(126,104,94)</color> <!-- can this be optional If color tag missing, use color declared in Source Def -->
+		</Material>	
+		<ButcherThingDefs> <!-- in addition to leather/meat -->
+			<OneOf />
+			<AllOf>
+				<li>
+					<ThingDef>ChunkSandstone</ThingDef>
+					<BaseYield>2</BaseYield>
+				</li>
+				<li>
+					<ThingDef>SlimeCore</ThingDef> <!-- not an item yet, just an example -->
+					<BaseYield>1</BaseYield>
+				</li>
+			</AllOf>
+		</ButcherThingDefs>
+	</Slimes.SlimeGeneratorDef>
+	
+	<!-- JADE -->
+	<Slimes.SlimeGeneratorDef>
+		<OriginThingDef>Crystal_Slime</OriginThingDef>
+		<StatModifiers>
+			<offsets>
+				<MoveSpeed>1</MoveSpeed>
+			</offsets>
+		</StatModifiers>
+		<RaceModifiers />
+		<Material>
+			<defprefix>jade</defprefix> <!-- Might not be needed, but either way..  generated defname =  defprefix+"_slime" -->
+			<label>jadeslime</label>
+			<SourceThingDef>Jade</SourceThingDef>
+			<color>(85,118,69)</color> <!-- can this be optional If color tag missing, use color declared in Source Def -->
+		</Material>	
+		<ButcherThingDefs> <!-- in addition to leather/meat -->
+			<OneOf />
+			<AllOf>
+				<li>
+					<ThingDef>Jade</ThingDef>
+					<BaseYield>5</BaseYield>
+				</li>
+			</AllOf>
+		</ButcherThingDefs>
+	</Slimes.SlimeGeneratorDef>
+	
+</Defs>

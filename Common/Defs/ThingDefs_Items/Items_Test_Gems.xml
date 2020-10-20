@@ -35,7 +35,6 @@
     <stuffProps>
       <categories>
         <li>Stony</li>
-        <li>Crystalline</li>
       </categories>
 	  <commonality>0.05</commonality>
       <color>(78,44,104)</color>
@@ -92,7 +91,6 @@
     <stuffProps>
       <categories>
         <li>Stony</li>
-        <li>Crystalline</li>
       </categories>
       <commonality>0.05</commonality>
       <color>(217,126,0)</color>

@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<!--<Slimes.BlackList>
-		<defName>Stony</defName>
-		<BlacklistStuffType>
-			<li>Crystalline</li>
-		<BlacklistStuffType>
-		<BlacklistDefs>
-			<li>Porcelain</li>
-		<BlacklistDefs>
-	</Slimes.BlackList> -->
-
 	<Slimes.StuffCategoryModifiers>
 		<defName>Metallic</defName>
 		<statsModifiers>

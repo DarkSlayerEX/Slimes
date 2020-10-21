@@ -18,12 +18,13 @@ namespace Slimes
         {
             if (recipeDef == SlimeDefOf.ButcherSlime)
             {
+                List<Thing> list = (__result as List<Thing>) ?? __result.ToList<Thing>();
                 var corpseSlimes = ingredients.Where(x => x is Corpse corpse && corpse.InnerPawn.IsSlime()).Cast<Corpse>().ToList();
-                __result = __result.ToList();
                 foreach (var t in GenerateExtraButcherProducts(corpseSlimes))
                 {
-                    __result.AddItem(t);
+                    list.Add(t);
                 }
+                __result = list;
             }
         }
 

@@ -11,31 +11,24 @@ using Verse;
 
 namespace Slimes
 {
-	[HarmonyPatch(typeof(Pawn), "SpawnSetup")]
-	public static class SpawnSetup
-	{
-		public static void Postfix(ref Pawn __instance)
-		{
-			if (__instance.kindDef.defName.EndsWith(GenerateImpliedDefs_PreResolve_Patch.slimeDefPostfix))
-            {
-				foreach (var statBase in __instance.def.statBases)
-				{
-					Log.Message("TEST 1: " + __instance.kindDef + " - " + statBase);
-				}
-			}
-		}
-	}
+	//[HarmonyPatch(typeof(Pawn), "SpawnSetup")]
+	//public static class SpawnSetup
+	//{
+	//	public static void Postfix(ref Pawn __instance)
+	//	{
+	//		if (__instance.kindDef.defName.EndsWith(GenerateImpliedDefs_PreResolve_Patch.slimeDefPostfix))
+    //        {
+	//			foreach (var statBase in __instance.def.statBases)
+	//			{
+	//				Log.Message("TEST 1: " + __instance.kindDef + " - " + statBase);
+	//			}
+	//		}
+	//	}
+	//}
 
 	[HarmonyPatch(typeof(DefGenerator), "GenerateImpliedDefs_PreResolve")]
 	public static class GenerateImpliedDefs_PreResolve_Patch
 	{
-		public static string slimeDefPostfix = "_Slime";
-	
-		public static List<StuffCategoryDef> allowedCategories = new List<StuffCategoryDef>
-		{
-			StuffCategoryDefOf.Stony,
-			StuffCategoryDefOf.Metallic
-		};
 
 		public static void AddImpliedDef<T>(T def) where T : Def, new()
 		{
@@ -55,6 +48,11 @@ namespace Slimes
 				newDef2.race = newDef1;
 				AddImpliedDef(newDef1);
 				AddImpliedDef(newDef2);
+			}
+			foreach (var slimeGenerator in DefDatabase<SlimeGeneratorDef>.AllDefs)
+			{
+				DefDatabase<ThingDef>.AllDefsListForReading.Remove(slimeGenerator.originThingDef);
+				DefDatabase<PawnKindDef>.AllDefsListForReading.Remove(slimeGenerator.originPawnKind);
 			}
 		}
 

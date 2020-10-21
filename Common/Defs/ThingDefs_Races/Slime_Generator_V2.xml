@@ -17,7 +17,7 @@
 		<raceModifiers />
 		<butcherThings>
 		    <butcherBasic> <!-- only leather/meat - Vanilla recipe -->
-				<Steel>2</Steel> 
+				<Uranium>2</Uranium> 
 		    </butcherBasic>
 			<butcherSpecialized> <!-- leather/meat, and the following defs - Specialized recipe -->
 				<oneOf />

@@ -5,6 +5,7 @@
 	<Slimes.SlimeGeneratorDef>
 		<defName>Steel_Slime</defName>
 		<label>steelslime</label>
+		<description>A steel slime</description>
 		<originThingDef>Metal_Slime</originThingDef>
 		<originPawnKind>Metal_Slime</originPawnKind>
 		<sourceThingDef>Steel</sourceThingDef>
@@ -17,10 +18,19 @@
 		<raceModifiers />
 		<butcherThings>
 		    <butcherBasic> <!-- only leather/meat - Vanilla recipe -->
-				<Uranium>2</Uranium> 
+				<Steel>2</Steel> 
 		    </butcherBasic>
 			<butcherSpecialized> <!-- leather/meat, and the following defs - Specialized recipe -->
-				<oneOf />
+				<oneOf>
+					<li>
+						<thingDef>ChunkSlagSteel</thingDef> 
+						<yieldRange>1~2</yieldRange>
+					</li>
+					<li>
+						<thingDef>ComponentIndustrial</thingDef> 
+						<yieldRange>1~2</yieldRange>
+					</li>
+				</oneOf>
 				<allOf>
 					<li>
 						<thingDef>Steel</thingDef> 

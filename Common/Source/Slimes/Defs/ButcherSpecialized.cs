@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 using Verse;
 
 namespace Slimes
 {
-    public class SourceMaterial
+    public class ButcherSpecialized
     {
-        public string defPrefix;
-        public string label;
-        public ThingDef sourceThingDef;
-        public Color color;
+        public List<ButcherData> oneOf;
+        public List<ButcherData> allOf;
     }
 }

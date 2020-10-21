@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace Slimes
@@ -11,10 +12,11 @@ namespace Slimes
     public class SlimeGeneratorDef : Def
     {
         public ThingDef originThingDef;
+        public ThingDef sourceThingDef;
+        public Color color;
         public PawnKindDef originPawnKind;
         public StatsModifiers statModifiers;
         public RaceModifiers raceModifiers;
-        public SourceMaterial material;
         public ButcherThings butcherThings;
     }
 }

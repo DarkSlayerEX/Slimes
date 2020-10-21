@@ -5,7 +5,6 @@
 	<Slimes.SlimeGeneratorDef>
 		<defName>Steel_Slime</defName>
 		<label>steelslime</label>
-		<description /> <!-- Optional: Overrides description tag originThingDef -->
 		<originThingDef>Metal_Slime</originThingDef>
 		<originPawnKind>Metal_Slime</originPawnKind>
 		<sourceThingDef>Steel</sourceThingDef>
@@ -25,7 +24,7 @@
 				<allOf>
 					<li>
 						<thingDef>Steel</thingDef> 
-						<yieldRange>(6,8)</yieldRange>
+						<yieldRange>6~8</yieldRange>
 					</li>
 				</allOf>
 			</butcherSpecialized>
@@ -36,7 +35,6 @@
 	<Slimes.SlimeGeneratorDef>
 		<defName>Slate_Slime</defName>
 		<label>slateslime</label>
-		<description /> <!-- Optional: Overrides description tag originThingDef -->
 		<originThingDef>Stone_Slime</originThingDef>
 		<originPawnKind>Stone_Slime</originPawnKind>
 		<sourceThingDef>ChunkSlate</sourceThingDef>
@@ -56,7 +54,7 @@
 				<allOf>
 					<li>
 						<thingDef>ChunkSlate</thingDef> 
-						<yieldRange>(2,4)</yieldRange>
+						<yieldRange>2~4</yieldRange>
 					</li>
 				</allOf>
 			</butcherSpecialized>
@@ -67,7 +65,6 @@
 	<Slimes.SlimeGeneratorDef>
 		<defName>Sandstone_Slime</defName>
 		<label>sandslime</label>
-		<description /> <!-- Optional: Overrides description tag originThingDef -->
 		<originThingDef>Stone_Slime</originThingDef>
 		<originPawnKind>Stone_Slime</originPawnKind>
 		<sourceThingDef>ChunkSandstone</sourceThingDef>
@@ -87,7 +84,7 @@
 				<allOf>
 					<li>
 						<thingDef>ChunkSandstone</thingDef> 
-						<yieldRange>(2,4)</yieldRange>
+						<yieldRange>2~4</yieldRange>
 					</li>
 				</allOf>
 			</butcherSpecialized>
@@ -98,7 +95,6 @@
 	<Slimes.SlimeGeneratorDef>
 		<defName>Jade_Slime</defName>
 		<label>jadeslime</label>
-		<description /> <!-- Optional: Overrides description tag originThingDef -->
 		<originThingDef>Crystal_Slime</originThingDef>
 		<originPawnKind>Crystal_Slime</originPawnKind>
 		<sourceThingDef>Jade</sourceThingDef>
@@ -118,7 +114,7 @@
 				<allOf>
 					<li>
 						<thingDef>Jade</thingDef> 
-						<yieldRange>(3,6)</yieldRange>
+						<yieldRange>3~6</yieldRange>
 					</li>
 				</allOf>
 			</butcherSpecialized>

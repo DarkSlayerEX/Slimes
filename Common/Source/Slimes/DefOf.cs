@@ -12,6 +12,7 @@ namespace Slimes
 	public static class SlimeDefOf
 	{
 		public static ThingDef Slime;
+		public static RecipeDef ButcherSlime;
 	}
 
 	[DefOf]

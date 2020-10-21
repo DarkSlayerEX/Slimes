@@ -41,15 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comps\CompExtraButcherProducts.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="DefOf.cs" />
+    <Compile Include="Defs\ButcherSpecialized.cs" />
     <Compile Include="Defs\RaceModifiers.cs" />
     <Compile Include="Defs\ButcherData.cs" />
-    <Compile Include="Defs\SourceMaterial.cs" />
     <Compile Include="Defs\ButcherThings.cs" />
     <Compile Include="Defs\StatsModifiers.cs" />
     <Compile Include="Defs\SlimeGeneratorDef.cs" />
     <Compile Include="Defs\StuffModifiers.cs" />
     <Compile Include="Defs\StuffCategoryModifiers.cs" />
+    <Compile Include="HarmonyPatches\ButcherProducts_Patch.cs" />
     <Compile Include="HarmonyPatches\GenerateImpliedDefs_PreResolve_Patch.cs" />
     <Compile Include="HarmonyPatches\HarmonyInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

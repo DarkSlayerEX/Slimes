@@ -10,7 +10,7 @@ namespace Slimes
 {
     public class ButcherThings
     {
-        public List<ButcherData> oneOf;
-        public List<ButcherData> allOf;
+        public List<ThingDefCountClass> butcherBasic;
+        public ButcherSpecialized butcherSpecialized;
     }
 }

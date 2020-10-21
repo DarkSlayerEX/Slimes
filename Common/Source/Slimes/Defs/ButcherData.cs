@@ -12,5 +12,6 @@ namespace Slimes
     {
         public ThingDef thingDef;
         public int baseYield;
+        public IntRange yieldRange;
     }
 }

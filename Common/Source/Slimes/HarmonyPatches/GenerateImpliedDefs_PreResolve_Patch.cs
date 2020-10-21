@@ -70,10 +70,30 @@ namespace Slimes
 				}
 				catch { }
 			}
-			thingDef.defName = slimeGenerator.material.defPrefix + slimeDefPostfix;
-			thingDef.label = slimeGenerator.material.label;
+			thingDef.defName = slimeGenerator.defName;
+			thingDef.label = slimeGenerator.label;
+			if (slimeGenerator.description?.Length > 0)
+            {
+				thingDef.description = slimeGenerator.description;
+			}
+			else
+			{
+				thingDef.description = slimeGenerator.originThingDef.description;
+			}
 			AssignNewVariables(ref thingDef, slimeGenerator.originThingDef);
 			AdjustStatBases(ref thingDef, slimeGenerator.statModifiers);
+			if (slimeGenerator.butcherThings.butcherBasic != null)
+            {
+				thingDef.butcherProducts = slimeGenerator.butcherThings.butcherBasic;
+			}
+			if (slimeGenerator.butcherThings.butcherSpecialized != null)
+			{
+				var compProperties = new CompProperties_ExtraButcherProducts
+				{
+					butcherSpecialized = slimeGenerator.butcherThings.butcherSpecialized
+				};
+				thingDef.comps.Add(compProperties);
+			}
 			return thingDef;
 		}
 
@@ -91,20 +111,29 @@ namespace Slimes
 				catch { }
 			}
 			AssignNewVariables(ref pawnKind, slimeGenerator.originPawnKind);
-			pawnKind.defName = slimeGenerator.material.defPrefix + slimeDefPostfix;
-			pawnKind.label = slimeGenerator.material.label;
+			pawnKind.defName = slimeGenerator.defName;
+			pawnKind.label = slimeGenerator.label;
+			if (slimeGenerator.description?.Length > 0)
+            {
+				pawnKind.description = slimeGenerator.description;
+			}
+			else
+            {
+				pawnKind.description = slimeGenerator.originThingDef.description;
+			}
 			foreach (var lifeStage in pawnKind.lifeStages)
 			{
-				if (slimeGenerator.material.color != null)
+				if (slimeGenerator.color != null)
                 {
-					lifeStage.bodyGraphicData.color = new Color(slimeGenerator.material.color.r, slimeGenerator.material.color.g, slimeGenerator.material.color.b, slimeGenerator.material.color.a);
+					lifeStage.bodyGraphicData.color = new Color(slimeGenerator.color.r, slimeGenerator.color.g, slimeGenerator.color.b, slimeGenerator.color.a);
 				}
 				else
                 {
-					lifeStage.bodyGraphicData.color = new Color(slimeGenerator.material.sourceThingDef.stuffProps.color.r, slimeGenerator.material.sourceThingDef.stuffProps.color.g,
-						slimeGenerator.material.sourceThingDef.stuffProps.color.b, slimeGenerator.material.sourceThingDef.stuffProps.color.a);
+					lifeStage.bodyGraphicData.color = new Color(slimeGenerator.sourceThingDef.stuffProps.color.r, slimeGenerator.sourceThingDef.stuffProps.color.g,
+						slimeGenerator.sourceThingDef.stuffProps.color.b, slimeGenerator.sourceThingDef.stuffProps.color.a);
 				}
 			}
+			Utils.slimePawnKindDefs.Add(pawnKind);
 			return pawnKind;
 		}
 

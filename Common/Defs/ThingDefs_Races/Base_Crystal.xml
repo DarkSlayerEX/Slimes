@@ -40,7 +40,9 @@
     <race>
       <body>StoneSlime</body>  <!-- Haven't made a Crystal Body -->
 	  <fleshType>Slime</fleshType>
+	  <bloodDef>Filth_Slime</bloodDef>
       <petness>0</petness>
+	  <needsRest>false</needsRest>
       <predator>true</predator>
       <baseBodySize>1.0</baseBodySize>
       <baseHungerRate>0.15</baseHungerRate>

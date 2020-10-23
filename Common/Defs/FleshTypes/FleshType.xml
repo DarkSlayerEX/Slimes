@@ -4,19 +4,19 @@
   <FleshTypeDef>
     <defName>Slime</defName>
     <corpseCategory>CorpsesSlime</corpseCategory>
-    <damageEffecter>Damage_HitFlesh</damageEffecter>
+    <damageEffecter>Damage_HitSlime</damageEffecter>
     <wounds>
       <li>
-        <texture>Things/Pawn/Wounds/WoundFleshA</texture>
-		<color>160,250,160</color>
+        <texture>Things/Pawn/Wounds/WoundSlimeA</texture>
+		<color>0.42,0.77,0.42</color>
       </li>
       <li>
-        <texture>Things/Pawn/Wounds/WoundFleshB</texture>
-		<color>160,250,160</color>
+        <texture>Things/Pawn/Wounds/WoundSlimeB</texture>
+		<color>0.42,0.77,0.42</color>
       </li>
       <li>
-        <texture>Things/Pawn/Wounds/WoundFleshC</texture>
-		<color>160,250,160</color>
+        <texture>Things/Pawn/Wounds/WoundSlimeC</texture>
+		<color>0.42,0.77,0.42</color>
       </li>
     </wounds>
   </FleshTypeDef>

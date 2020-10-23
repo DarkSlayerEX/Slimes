@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <EffecterDef>
+    <defName>Damage_HitSlime</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <positionRadius>0.4</positionRadius>
+        <moteDef>Mote_AirPuff</moteDef>
+        <burstCount>4~5</burstCount>
+        <speed>0.4~0.8</speed>
+        <scale>1.0~1.3</scale>
+        <color>(160, 220, 160)</color>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <positionRadius>0.1</positionRadius>
+        <moteDef>Mote_BloodSplash</moteDef>
+        <burstCount>2~3</burstCount>
+        <scale>1.6~2.1</scale>
+        <color>(160, 220, 160)</color>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <positionRadius>0.0</positionRadius>
+        <moteDef>Mote_BodyImpact</moteDef>
+        <burstCount>1</burstCount>
+        <scale>0.55</scale>
+        <color>(160, 220, 160, 60)</color>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+    </children>
+    <offsetTowardsTarget>0.25~0.25</offsetTowardsTarget>
+    <positionRadius>0.1</positionRadius>
+  </EffecterDef>
+
+
+
+</Defs>

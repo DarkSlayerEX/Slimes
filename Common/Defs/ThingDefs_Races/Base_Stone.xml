@@ -40,7 +40,9 @@
     <race>
       <body>StoneSlime</body>
 	  <fleshType>Slime</fleshType>
+	  <bloodDef>Filth_Slime</bloodDef>
       <petness>0</petness>
+	  <needsRest>false</needsRest>
       <predator>true</predator>
       <baseBodySize>2.5</baseBodySize>
       <baseHungerRate>0.3</baseHungerRate>

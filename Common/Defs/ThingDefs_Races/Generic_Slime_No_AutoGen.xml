@@ -36,7 +36,10 @@
     </comps>
     <race>
       <body>Slime</body>
-      <petness>0</petness>
+	  <fleshType>Slime</fleshType>
+	  <bloodDef>Filth_Slime</bloodDef>
+	  <petness>0</petness>
+	  <needsRest>false</needsRest>
       <predator>true</predator>
       <baseBodySize>1.0</baseBodySize>
       <baseHungerRate>0.10</baseHungerRate>

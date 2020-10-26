@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
-
+using System.Text.RegularExpressions;
 namespace Slimes
 {
 	//[HarmonyPatch(typeof(Pawn), "SpawnSetup")]
@@ -42,7 +42,7 @@ namespace Slimes
 
 			foreach (var slimeGenerator in DefDatabase<SlimeGeneratorDef>.AllDefs)
             {
-				Log.Message("slimeGenerator: " + slimeGenerator + " - " + slimeGenerator.originThingDef);
+				Log.Message("slimeGenerator: " + slimeGenerator + " - " + slimeGenerator.slimeTypeDef.originThingDef);
 				var newDef1 = BaseSlimeDef(slimeGenerator);
 				var newDef2 = BaseSlimeKindDef(slimeGenerator);
 				newDef2.race = newDef1;
@@ -51,8 +51,8 @@ namespace Slimes
 			}
 			foreach (var slimeGenerator in DefDatabase<SlimeGeneratorDef>.AllDefs)
 			{
-				DefDatabase<ThingDef>.AllDefsListForReading.Remove(slimeGenerator.originThingDef);
-				DefDatabase<PawnKindDef>.AllDefsListForReading.Remove(slimeGenerator.originPawnKind);
+				DefDatabase<ThingDef>.AllDefsListForReading.Remove(slimeGenerator.slimeTypeDef.originThingDef);
+				DefDatabase<PawnKindDef>.AllDefsListForReading.Remove(slimeGenerator.slimeTypeDef.originPawnKind);
 			}
 		}
 
@@ -64,7 +64,7 @@ namespace Slimes
 				try
 				{
 					var newField = thingDef.GetType().GetField(fieldInfo.Name);
-					newField.SetValue(thingDef, fieldInfo.GetValue(slimeGenerator.originThingDef));
+					newField.SetValue(thingDef, fieldInfo.GetValue(slimeGenerator.slimeTypeDef.originThingDef));
 				}
 				catch { }
 			}
@@ -76,9 +76,9 @@ namespace Slimes
 			}
 			else
 			{
-				thingDef.description = slimeGenerator.originThingDef.description;
+				thingDef.description = slimeGenerator.slimeTypeDef.originThingDef.description;
 			}
-			AssignNewVariables(ref thingDef, slimeGenerator.originThingDef);
+			AssignNewVariables(ref thingDef, slimeGenerator.slimeTypeDef.originThingDef);
 			AdjustStatBases(ref thingDef, slimeGenerator.statModifiers);
 			if (slimeGenerator.butcherThings.butcherBasic != null)
             {
@@ -92,6 +92,14 @@ namespace Slimes
 				};
 				thingDef.comps.Add(compProperties);
 			}
+			if (slimeGenerator.slimeTypeDef.growthStages != null && slimeGenerator.slimeTypeDef.growthStages.Count > 0)
+            {
+				var compProperties = new CompProperties_ExtraGraphics
+				{
+					growthStages = slimeGenerator.slimeTypeDef.growthStages
+				};
+				thingDef.comps.Add(compProperties);
+            }
 			return thingDef;
 		}
 
@@ -104,11 +112,11 @@ namespace Slimes
 				try
 				{
 					var newField = pawnKind.GetType().GetField(fieldInfo.Name);
-					newField.SetValue(pawnKind, fieldInfo.GetValue(slimeGenerator.originPawnKind));
+					newField.SetValue(pawnKind, fieldInfo.GetValue(slimeGenerator.slimeTypeDef.originPawnKind));
 				}
 				catch { }
 			}
-			AssignNewVariables(ref pawnKind, slimeGenerator.originPawnKind);
+			AssignNewVariables(ref pawnKind, slimeGenerator.slimeTypeDef.originPawnKind);
 			pawnKind.defName = slimeGenerator.defName;
 			pawnKind.label = slimeGenerator.label;
 			if (slimeGenerator.description?.Length > 0)
@@ -117,7 +125,7 @@ namespace Slimes
 			}
 			else
             {
-				pawnKind.description = slimeGenerator.originThingDef.description;
+				pawnKind.description = slimeGenerator.slimeTypeDef.originThingDef.description;
 			}
 			foreach (var lifeStage in pawnKind.lifeStages)
 			{

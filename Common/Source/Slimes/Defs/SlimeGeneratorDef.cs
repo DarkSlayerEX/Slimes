@@ -11,10 +11,9 @@ namespace Slimes
 {
     public class SlimeGeneratorDef : Def
     {
-        public ThingDef originThingDef;
         public ThingDef sourceThingDef;
+        public SlimeTypeDef slimeTypeDef;
         public Color color;
-        public PawnKindDef originPawnKind;
         public StatsModifiers statModifiers;
         public RaceModifiers raceModifiers;
         public ButcherThings butcherThings;

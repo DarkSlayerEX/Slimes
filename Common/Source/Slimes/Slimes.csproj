@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comps\CompExtraGraphics.cs" />
     <Compile Include="Comps\CompExtraButcherProducts.cs" />
+    <Compile Include="Defs\GrowthStage.cs" />
+    <Compile Include="Defs\SlimeTypeDef.cs" />
+    <Compile Include="HarmonyPatches\Ingested_Patch.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="DefOf.cs" />
     <Compile Include="Defs\ButcherSpecialized.cs" />

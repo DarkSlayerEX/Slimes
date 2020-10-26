@@ -32,7 +32,6 @@ namespace Slimes
         public override void CompTick()
         {
             base.CompTick();
-			Log.Message(this.parent + " - CompTick - " + this.Props.butcherSpecialized.allOf);
         }
     }
 }

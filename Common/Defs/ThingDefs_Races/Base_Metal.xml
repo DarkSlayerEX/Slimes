@@ -45,7 +45,7 @@
 	  <needsRest>false</needsRest>
       <predator>true</predator>
       <baseBodySize>1.5</baseBodySize>
-      <baseHungerRate>0.25</baseHungerRate>
+      <baseHungerRate>10.25</baseHungerRate>
       <baseHealthScale>1.5</baseHealthScale>
       <foodType>OmnivoreRoughAnimal, OmnivoreAnimal, OvivoreAnimal</foodType>
       <herdAnimal>false</herdAnimal>

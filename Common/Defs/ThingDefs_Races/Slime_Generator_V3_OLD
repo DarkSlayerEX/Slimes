@@ -6,36 +6,47 @@
 		<defName>Metal_Slime</defName>
 		<originThingDef>Metal_Slime</originThingDef>
 		<originPawnKind>Metal_Slime</originPawnKind>
+		<totalAbsorbableMass>150</totalAbsorbableMass>
 		<growthStages>
 			<li>
 				<massStage>1</massStage>
 				<graphicPath>Things/Pawn/Animal/CrystalSlime</graphicPath>
 				<drawSize>5</drawSize>
 				<color>(105,105,105)</color>
+				<massConversionRate>0.00001</massConversionRate>
+				<massConversionEfficiency>0.3</massConversionEfficiency>
 			</li>
 			<li>
-				<massStage>0.75</massStage>
+				<massStage>0.70</massStage>
 				<graphicPath>Things/Pawn/Animal/MetalSlime</graphicPath>
 				<drawSize>4</drawSize>
 				<color>(105,105,105)</color>
+				<massConversionRate>0.08</massConversionRate>
+				<massConversionEfficiency>0.3</massConversionEfficiency>
 			</li>
 			<li>
-				<massStage>0.50</massStage>
+				<massStage>0.40</massStage>
 				<graphicPath>Things/Pawn/Animal/Slime</graphicPath>
 				<drawSize>3</drawSize>
 				<color>(105,105,105)</color>
+				<massConversionRate>0.05</massConversionRate>
+				<massConversionEfficiency>0.3</massConversionEfficiency>
 			</li>
 			<li>
-				<massStage>0.25</massStage>
+				<massStage>0.20</massStage>
 				<graphicPath>Things/Pawn/Animal/StoneSlime</graphicPath>
 				<drawSize>2</drawSize>
 				<color>(105,105,105)</color>
+				<massConversionRate>0.03</massConversionRate>
+				<massConversionEfficiency>0.3</massConversionEfficiency>
 			</li>
 			<li>
 				<massStage>0</massStage>
 				<graphicPath>Things/Pawn/Animal/CrystalSlime</graphicPath>
 				<drawSize>5</drawSize>
 				<color>(105,105,105)</color>
+				<massConversionRate>0.01</massConversionRate>
+				<massConversionEfficiency>0.3</massConversionEfficiency>
 			</li>
 		</growthStages>
 	</Slimes.SlimeTypeDef>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Steel -->
+	<Slimes.SlimeGeneratorDef>
+		<defName>Steel_Slime</defName>
+		<label>steelslime</label>
+		<description>A steel slime</description>
+		<slimeTypeDef>Metal_Slime</slimeTypeDef>
+		<sourceThingDef>Steel</sourceThingDef>
+		<color>(105,105,105)</color>
+		<!-- Optional: Overrides color tag taken from sourceThingDef -->
+		<statModifiers>
+			<offsets>
+				<MoveSpeed>0.5</MoveSpeed>
+			</offsets>
+		</statModifiers>
+		<raceModifiers />
+		<totalAbsorbableMass>200</totalAbsorbableMass>
+		<growthStageOverrides>
+		<stage5>
+			<color>(105,0,0)</color>
+		</stage5>
+		<butcherThings>
+			<butcherBasic>
+				<!-- only leather/meat - Vanilla recipe -->
+				<Steel>2</Steel> 
+			</butcherBasic>
+			<butcherSpecialized>
+				<!-- butcherBasic + following defs - Specialized recipe -->
+				<oneOf>
+					<li>
+						<!-- chooses only one of these -->
+						<thingDef>ChunkSlagSteel</thingDef> 
+						<yieldRange>1~2</yieldRange>
+					</li>
+					<li>
+						<thingDef>ComponentIndustrial</thingDef> 
+						<yieldRange>1~2</yieldRange>
+					</li>
+				</oneOf>
+				<allOf>
+					<!-- adds all of these to output -->
+					<li>
+						<thingDef>Steel</thingDef> 
+						<yieldRange>6~8</yieldRange>
+					</li>
+				</allOf>
+			</butcherSpecialized>
+		</butcherThings>
+	</Slimes.SlimeGeneratorDef>
+
+	<!-- Slate -->
+	<Slimes.SlimeGeneratorDef>
+		<defName>Slate_Slime</defName>
+		<label>slateslime</label>
+		<slimeTypeDef>Stone_Slime</slimeTypeDef>
+		<sourceThingDef>ChunkSlate</sourceThingDef>
+		<color>(70,70,70)</color>
+		<statModifiers>
+			<offsets>
+				<MoveSpeed>-0.2</MoveSpeed>
+			</offsets>
+		</statModifiers>
+		<raceModifiers />
+		<butcherThings>
+			<butcherBasic>
+				<ChunkSlate>1</ChunkSlate> 
+			</butcherBasic>
+			<butcherSpecialized> 
+				<oneOf />
+				<allOf>
+					<li>
+						<thingDef>ChunkSlate</thingDef> 
+						<yieldRange>2~4</yieldRange>
+					</li>
+				</allOf>
+			</butcherSpecialized>
+		</butcherThings>
+	</Slimes.SlimeGeneratorDef>
+
+	<!-- Sandstone -->
+	<Slimes.SlimeGeneratorDef>
+		<defName>Sandstone_Slime</defName>
+		<label>sandslime</label>
+		<slimeTypeDef>Stone_Slime</slimeTypeDef>
+		<sourceThingDef>ChunkSandstone</sourceThingDef>
+		<color>(126,104,94)</color>
+		<statModifiers>
+			<offsets>
+				<MoveSpeed>-0.3</MoveSpeed>
+			</offsets>
+		</statModifiers>
+		<raceModifiers />
+		<butcherThings>
+			<butcherBasic>
+				<ChunkSandstone>1</ChunkSandstone> 
+			</butcherBasic>
+			<butcherSpecialized>
+				<oneOf />
+				<allOf>
+					<li>
+						<thingDef>ChunkSandstone</thingDef> 
+						<yieldRange>2~4</yieldRange>
+					</li>
+				</allOf>
+			</butcherSpecialized>
+		</butcherThings>
+	</Slimes.SlimeGeneratorDef>
+
+	<!-- JADE -->
+	<Slimes.SlimeGeneratorDef>
+		<defName>Jade_Slime</defName>
+		<label>jadeslime</label>
+		<slimeTypeDef>Crystal_Slime</slimeTypeDef>
+		<sourceThingDef>Jade</sourceThingDef>
+		<color>(85,118,69)</color>
+		<statModifiers>
+			<offsets>
+				<MoveSpeed>0.3</MoveSpeed>
+			</offsets>
+		</statModifiers>
+		<raceModifiers />
+		<butcherThings>
+			<butcherBasic>
+				<Jade>2</Jade> 
+			</butcherBasic>
+			<butcherSpecialized>
+				<oneOf />
+				<allOf>
+					<li>
+						<thingDef>Jade</thingDef> 
+						<yieldRange>3~6</yieldRange>
+					</li>
+				</allOf>
+			</butcherSpecialized>
+		</butcherThings>
+	</Slimes.SlimeGeneratorDef>
+
+</Defs>

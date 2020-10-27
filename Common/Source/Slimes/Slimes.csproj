@@ -44,7 +44,9 @@
     <Compile Include="Comps\CompExtraGraphics.cs" />
     <Compile Include="Comps\CompExtraButcherProducts.cs" />
     <Compile Include="Defs\GrowthStage.cs" />
+    <Compile Include="Defs\GrowthStages.cs" />
     <Compile Include="Defs\SlimeTypeDef.cs" />
+    <Compile Include="HarmonyPatches\UpdatePlay_Patch.cs" />
     <Compile Include="HarmonyPatches\Ingested_Patch.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="DefOf.cs" />

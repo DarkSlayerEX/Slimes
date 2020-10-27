@@ -13,7 +13,7 @@ namespace Slimes
     {
         public ThingDef originThingDef;
         public PawnKindDef originPawnKind;
-        public List<GrowthStage> growthStages;
-
+        public GrowthStages growthStages;
+        public float totalAbsorbableMass;
     }
 }

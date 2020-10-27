@@ -16,11 +16,11 @@
 			</offsets>
 		</statModifiers>
 		<raceModifiers />
-		<totalAbsorbableMass>200</totalAbsorbableMass>
 		<growthStageOverrides>
-		<stage5>
-			<color>(105,0,0)</color>
-		</stage5>
+			<stage5>
+				<color>(105,0,0)</color>
+			</stage5>
+		</growthStageOverrides>
 		<butcherThings>
 			<butcherBasic>
 				<!-- only leather/meat - Vanilla recipe -->

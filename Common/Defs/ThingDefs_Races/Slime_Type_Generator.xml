@@ -2,7 +2,6 @@
 <Defs>
 
 	<Slimes.SlimeTypeDef>
-		<!-- We can use these to hold custom data for when all slimes of the same type should use it. -->
 		<defName>Metal_Slime</defName>
 		<originThingDef>Metal_Slime</originThingDef>
 		<originPawnKind>Metal_Slime</originPawnKind>
@@ -13,42 +12,47 @@
 				<graphicPath>Things/Pawn/Animal/CrystalSlime</graphicPath>
 				<drawSize>1</drawSize>
 				<color>(105,105,105)</color>
-				<massConversionRate>0.01</massConversionRate>
+				<massConversionRate>1</massConversionRate>
 				<massConversionEfficiency>0.3</massConversionEfficiency>
 				<baseHungerRate>4.0</baseHungerRate>
+				<baseHungerRate>1</baseHungerRate>
 			</stage1>
 			<stage2>
 				<massStage>0.10</massStage>
 				<graphicPath>Things/Pawn/Animal/StoneSlime</graphicPath>
 				<drawSize>2</drawSize>
 				<color>(105,105,105)</color>
-				<massConversionRate>0.03</massConversionRate>
+				<massConversionRate>3</massConversionRate>
 				<massConversionEfficiency>0.3</massConversionEfficiency>
+				<baseHungerRate>0.5</baseHungerRate>
 			</stage2>
 			<stage3>
 				<massStage>0.30</massStage>
 				<graphicPath>Things/Pawn/Animal/Slime</graphicPath>
 				<drawSize>3</drawSize>
 				<color>(105,105,105)</color>
-				<massConversionRate>0.05</massConversionRate>
+				<massConversionRate>5</massConversionRate>
 				<massConversionEfficiency>0.3</massConversionEfficiency>
+				<baseHungerRate>0.3</baseHungerRate>
+
 			</stage3>
 			<stage4>
 				<massStage>0.65</massStage>
 				<graphicPath>Things/Pawn/Animal/MetalSlime</graphicPath>
 				<drawSize>4</drawSize>
 				<color>(105,105,105)</color>
-				<massConversionRate>0.08</massConversionRate>
+				<massConversionRate>8</massConversionRate>
 				<massConversionEfficiency>0.3</massConversionEfficiency>
+				<baseHungerRate>0.1</baseHungerRate>
 			</stage4>
 			<stage5>
 				<massStage>1</massStage>
 				<graphicPath>Things/Pawn/Animal/CrystalSlime</graphicPath>
 				<drawSize>5</drawSize>
 				<color>(105,105,105)</color>
-				<massConversionRate>0.00001</massConversionRate>
+				<massConversionRate>10</massConversionRate>
 				<massConversionEfficiency>0.3</massConversionEfficiency>
-				<baseHungerRate>0.01</baseHungerRate>
+				<baseHungerRate>0.001</baseHungerRate>
 			</stage5>
 		</growthStages>
 	</Slimes.SlimeTypeDef>

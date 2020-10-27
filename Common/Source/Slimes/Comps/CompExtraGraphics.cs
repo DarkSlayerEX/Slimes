@@ -16,7 +16,8 @@ namespace Slimes
 		{
 			this.compClass = typeof(CompExtraGraphics);
 		}
-		public List<GrowthStage> growthStages;
+		public GrowthStages growthStages;
+		public float totalAbsorbableMass;
 	}
 
 	public class CompExtraGraphics : ThingComp
@@ -35,29 +36,31 @@ namespace Slimes
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-			this.TryChangeGraphics();
-		}
-
-		public override void CompTick()
+			curStage = GetCurrentStage();
+        }
+        public override void CompTick()
         {
             base.CompTick();
-			if (Find.TickManager.TicksGame % 60 == 0 && unprocessedMass > 0f)
+			if (innerMass < Props.totalAbsorbableMass && curStage != null && Find.TickManager.TicksGame % curStage.massConversionRate == 0)
             {
-				var massToGain = 0f;
-				if (unprocessedMass > 1f)
-                {
-					massToGain = 1f;
-					unprocessedMass -= 1f;
-                }
-				else
-                {
-					massToGain = unprocessedMass;
-					unprocessedMass = 0;
+				if (unprocessedMass > 0f)
+				{
+					var massToGain = 0f;
+					if (unprocessedMass > 1f)
+					{
+						massToGain = 1f * curStage.massConversionEfficiency;
+						unprocessedMass -= 1f;
+					}
+					else
+					{
+						massToGain = unprocessedMass * curStage.massConversionEfficiency;
+						unprocessedMass = 0;
+					}
+					innerMass += massToGain;
+					Log.Message(this.parent + " gained " + innerMass);
 				}
-				innerMass += massToGain;
-				Log.Message(this.parent + " gained " + innerMass);
+				this.TryChangeGraphics();
 			}
-			this.TryChangeGraphics();
 		}
 
 		public void TryChangeGraphics()
@@ -67,19 +70,19 @@ namespace Slimes
 				var stage = GetCurrentStage();
 				if (stage != null && stage != curStage)
                 {
-					Log.Message(innerMass + " - " + unprocessedMass + " - " + stage.massStage);
 					ChangeGraphics(stage);
 					curStage = stage;
 				}
 			}
-		} 
+		}
+
 		public GrowthStage GetCurrentStage()
         {
-			var keys = Props.growthStages;
+			var keys = Props.growthStages.growthStages.OrderBy(x => x.massStage);
 			GrowthStage result = null;
 			foreach (var key in keys)
 			{
-				if (key.massStage < innerMass)
+				if (key.massStage <= innerMass)
 				{
 					result = key;
 				}
@@ -88,11 +91,40 @@ namespace Slimes
 		}
 		public void ChangeGraphics(GrowthStage growthStage)
         {
+			Log.Message("Changed graphics: " + growthStage.graphicPath);
 			var pawn = this.parent as Pawn;
 			pawn.Drawer.renderer.graphics.ResolveAllGraphics();
 			pawn.Drawer.renderer.graphics.nakedGraphic = GraphicDatabase.Get<Graphic_Multi>(growthStage.graphicPath, ShaderDatabase.CutoutSkin,
 				new Vector2(growthStage.drawSize, growthStage.drawSize), growthStage.color);
+			if (growthStage.baseHungerRate > 0f)
+            {
+				ChangeHungerRate(growthStage);
+			}
 		}
+
+		public void ChangeHungerRate(GrowthStage growthStage)
+        {
+			var hediffDef = new HediffDef()
+			{
+				defName = "SlimeHungerRate" + this.parent.ThingID,
+				label = "SlimeHungerRate" + this.parent.ThingID,
+				stages = new List<HediffStage>
+				{
+					new HediffStage()
+					{
+						hungerRateFactor = growthStage.baseHungerRate
+					}
+				}
+			};
+			var pawn = this.parent as Pawn;
+			var hungerHediff = HediffMaker.MakeHediff(hediffDef, pawn);
+			var oldHediff = pawn.health.hediffSet.hediffs.Where(x => x.def.defName.StartsWith("SlimeHungerRate")).FirstOrDefault();
+			if (oldHediff != null)
+            {
+				pawn.health.hediffSet.hediffs.Remove(oldHediff);
+            }
+			pawn.health.AddHediff(hungerHediff);
+        }
 
         public override void PostExposeData()
         {

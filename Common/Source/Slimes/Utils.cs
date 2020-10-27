@@ -9,7 +9,7 @@ using Verse;
 namespace Slimes
 {	public static class Utils
 	{
-		public static List<PawnKindDef> slimePawnKindDefs = new List<PawnKindDef>();
+		public static HashSet<PawnKindDef> slimePawnKindDefs = new HashSet<PawnKindDef>();
 
 		public static bool IsSlime(this Pawn pawn)
         {

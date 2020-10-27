@@ -92,11 +92,12 @@ namespace Slimes
 				};
 				thingDef.comps.Add(compProperties);
 			}
-			if (slimeGenerator.slimeTypeDef.growthStages != null && slimeGenerator.slimeTypeDef.growthStages.Count > 0)
+			if (slimeGenerator.slimeTypeDef.growthStages != null)
             {
 				var compProperties = new CompProperties_ExtraGraphics
 				{
-					growthStages = slimeGenerator.slimeTypeDef.growthStages
+					growthStages = slimeGenerator.slimeTypeDef.growthStages,
+					totalAbsorbableMass = slimeGenerator.slimeTypeDef.totalAbsorbableMass
 				};
 				thingDef.comps.Add(compProperties);
             }

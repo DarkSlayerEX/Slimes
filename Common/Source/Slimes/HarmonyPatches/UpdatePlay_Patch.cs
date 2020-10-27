@@ -47,4 +47,26 @@ namespace Slimes
 		}
 	}
 
+	[HarmonyPatch(typeof(Pawn), "SpawnSetup")]
+	public class SpawnSetup_Patch
+	{
+		public static void Postfix(Pawn __instance)
+		{
+			if (PawnGraphicSetPostfix_Patch.done && __instance.IsSlime())
+			{
+				var comp = __instance.TryGetComp<CompExtraGraphics>();
+				if (comp != null)
+				{
+					if (comp.Props.growthStages != null)
+					{
+						var stage = comp.GetCurrentStage();
+						if (stage != null)
+						{
+							comp.ChangeGraphics(stage);
+						}
+					}
+				}
+			}
+		}
+	}
 }

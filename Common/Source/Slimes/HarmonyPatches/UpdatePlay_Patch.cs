@@ -69,4 +69,13 @@ namespace Slimes
 			}
 		}
 	}
+
+	[HarmonyPatch(typeof(Game), "LoadGame")]
+	public class LoadGame_Patch
+	{
+		public static void Postfix()
+		{
+			PawnGraphicSetPostfix_Patch.done = false;
+		}
+	}
 }

@@ -46,6 +46,7 @@ namespace Slimes
 				if (unprocessedMass > 0f)
 				{
 					var massToGain = 0f;
+					Log.Message(this.parent + " trying to process " + unprocessedMass + " - total current mass: " + innerMass);
 					if (unprocessedMass > 1f)
 					{
 						massToGain = 1f * curStage.massConversionEfficiency;
@@ -57,7 +58,7 @@ namespace Slimes
 						unprocessedMass = 0;
 					}
 					innerMass += massToGain;
-					Log.Message(this.parent + " gained " + innerMass);
+					Log.Message(this.parent + " gained " + massToGain + " - total current mass: " + innerMass + " - unprocessed mass: " + unprocessedMass);
 				}
 				this.TryChangeGraphics();
 			}
@@ -82,7 +83,8 @@ namespace Slimes
 			GrowthStage result = null;
 			foreach (var key in keys)
 			{
-				if (key.massStage <= innerMass)
+				var progress = innerMass / Props.totalAbsorbableMass;
+				if (key.massStage <= progress)
 				{
 					result = key;
 				}
@@ -92,6 +94,8 @@ namespace Slimes
 		public void ChangeGraphics(GrowthStage growthStage)
         {
 			Log.Message("Changed graphics: " + growthStage.graphicPath);
+			Log.Message("Result: " + growthStage.massStage + " - innerMass: " + innerMass + " - Props.totalAbsorbableMass: " + Props.totalAbsorbableMass);
+
 			var pawn = this.parent as Pawn;
 			pawn.Drawer.renderer.graphics.ResolveAllGraphics();
 			pawn.Drawer.renderer.graphics.nakedGraphic = GraphicDatabase.Get<Graphic_Multi>(growthStage.graphicPath, ShaderDatabase.CutoutSkin,
@@ -104,26 +108,26 @@ namespace Slimes
 
 		public void ChangeHungerRate(GrowthStage growthStage)
         {
-			var hediffDef = new HediffDef()
-			{
-				defName = "SlimeHungerRate" + this.parent.ThingID,
-				label = "SlimeHungerRate" + this.parent.ThingID,
-				stages = new List<HediffStage>
-				{
-					new HediffStage()
-					{
-						hungerRateFactor = growthStage.baseHungerRate
-					}
-				}
-			};
-			var pawn = this.parent as Pawn;
-			var hungerHediff = HediffMaker.MakeHediff(hediffDef, pawn);
-			var oldHediff = pawn.health.hediffSet.hediffs.Where(x => x.def.defName.StartsWith("SlimeHungerRate")).FirstOrDefault();
-			if (oldHediff != null)
-            {
-				pawn.health.hediffSet.hediffs.Remove(oldHediff);
-            }
-			pawn.health.AddHediff(hungerHediff);
+			//var hediffDef = new HediffDef()
+			//{
+			//	defName = "SlimeHungerRate" + this.parent.ThingID,
+			//	label = "SlimeHungerRate" + this.parent.ThingID,
+			//	stages = new List<HediffStage>
+			//	{
+			//		new HediffStage()
+			//		{
+			//			hungerRateFactor = growthStage.baseHungerRate
+			//		}
+			//	}
+			//};
+			//var pawn = this.parent as Pawn;
+			//var hungerHediff = HediffMaker.MakeHediff(hediffDef, pawn);
+			//var oldHediff = pawn.health.hediffSet.hediffs.Where(x => x.def.defName.StartsWith("SlimeHungerRate")).FirstOrDefault();
+			//if (oldHediff != null)
+            //{
+			//	pawn.health.hediffSet.hediffs.Remove(oldHediff);
+            //}
+			//pawn.health.AddHediff(hungerHediff);
         }
 
         public override void PostExposeData()
